@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\QLBH.csproj": {}
+    "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj": {}
   },
   "projects": {
-    "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\QLBH.csproj": {
+    "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\QLBH.csproj",
+        "projectUniqueName": "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
         "projectName": "QLBH",
-        "projectPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\QLBH.csproj",
-        "packagesPath": "C:\\Users\\Tanh\\.nuget\\packages\\",
-        "outputPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\obj\\",
+        "projectPath": "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
+        "packagesPath": "C:\\Users\\DP\\.nuget\\packages\\",
+        "outputPath": "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Tanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -49,6 +49,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
