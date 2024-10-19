@@ -3,5 +3,32 @@
     Layout = "~/Views/Shared/Mylayout.cshtml";
 
 }
-
+@model List<Monan>
+@foreach(var item in Model)
+{
+    <div class="col-product">
+        <article class="card-product">
+            <div class="card-header">
+                <a href="#" class="card-image-link" onclick="detailProduct(1)">
+                    <img class="card-image" src="./assets/img/products/nam-dui-ga-chay-toi.jpeg" alt="Nấm đùi gà xào cháy tỏi">
+                </a>
+            </div>
+            <div class="food-info">
+                <div class="card-content">
+                    <div class="card-title">
+                        <a href="#" class="card-title-link" onclick="detailProduct(1)">@item.TenHh</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="product-price">
+                        <span class="current-price">@item.DonGiaBan</span>
+                    </div>
+                    <div class="product-buy">
+                        <button onclick="detailProduct(1)" class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+}
 

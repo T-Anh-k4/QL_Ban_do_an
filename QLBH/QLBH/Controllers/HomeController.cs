@@ -6,6 +6,7 @@ namespace QLBH.Controllers
 {
     public class HomeController : Controller
     {
+        QlbandoanContext db = new QlbandoanContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -15,7 +16,8 @@ namespace QLBH.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var lstsanpham = db.Monans.ToList();
+            return View(lstsanpham);
         }
 
         public IActionResult Privacy()
