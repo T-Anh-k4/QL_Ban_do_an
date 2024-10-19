@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\QLBH.csproj",
+      "projectUniqueName": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
       "projectName": "QLBH",
-      "projectPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\QLBH.csproj",
+      "projectPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
       "packagesPath": "C:\\Users\\Tanh\\.nuget\\packages\\",
-      "outputPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QLBH\\QLBH\\obj\\",
+      "outputPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
