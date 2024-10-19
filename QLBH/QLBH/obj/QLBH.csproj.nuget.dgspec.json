@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj": {}
+    "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj": {}
   },
   "projects": {
-    "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj": {
+    "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
+        "projectUniqueName": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
         "projectName": "QLBH",
-        "projectPath": "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
-        "packagesPath": "C:\\Users\\DP\\.nuget\\packages\\",
-        "outputPath": "E:\\CODE\\LapTrinhTrucQuan\\QL_Ban_do_an\\QLBH\\QLBH\\obj\\",
+        "projectPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\QLBH.csproj",
+        "packagesPath": "C:\\Users\\Tanh\\.nuget\\packages\\",
+        "outputPath": "D:\\Thiết kế web\\LẬP TRÌNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -63,6 +63,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.10, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.6, )"
             }
           },
           "imports": [
