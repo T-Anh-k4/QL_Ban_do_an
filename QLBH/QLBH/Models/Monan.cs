@@ -13,7 +13,7 @@ public partial class Monan
 
     public decimal? DonGiaBan { get; set; }
 
-    public byte[]? Anh { get; set; }
+    public string? Anh { get; set; }
 
     public virtual ICollection<Chitiethoadon> Chitiethoadons { get; set; } = new List<Chitiethoadon>();
 
