@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QLBH.Models;
 
 namespace QLBH.Areas.Admin.Controllers
 {
@@ -7,6 +8,7 @@ namespace QLBH.Areas.Admin.Controllers
     [Route("admin/homeadmin")]
     public class HomeAdminController : Controller
     {
+        Monan db = new Monan();
         [Route("")]
         [Route("index")]
         public IActionResult Index()

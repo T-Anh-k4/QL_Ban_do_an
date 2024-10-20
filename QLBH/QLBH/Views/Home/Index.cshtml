@@ -3,5 +3,46 @@
     Layout = "~/Views/Shared/Mylayout.cshtml";
 
 }
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Monan>
+<div class="home-products" id="home-products">
+@foreach(var item in Model)
+{
+    <div class="col-product">
+        <article class="card-product">
+            <div class="card-header">
+                <a href="#" class="card-image-link" onclick="detailProduct(1)">
+                    <img class="card-image" src="@Url.Content("../assets/img/products/" + item.Anh)" alt="Nấm đùi gà xào cháy tỏi">
+                </a>
+            </div>
+            <div class="food-info">
+                <div class="card-content">
+                    <div class="card-title">
+                        <a href="#" class="card-title-link" onclick="detailProduct(1)">@item.TenHh</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="product-price">
+                        <span class="current-price">@item.DonGiaBan</span>
+                    </div>
+                    <div class="product-buy">
+                        <button onclick="detailProduct(1)" class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+}
+</div>
+
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), new PagedListRenderOptions
+   {
+       ContainerDivClasses = new[] { "page-nav" }, // Thêm class cho div bao quanh
+       UlElementClasses = new[] { "page-nav-list" }, // Thêm class cho ul
+       LiElementClasses = new[] { "page-nav-item" }, // Thêm class cho li
+   })
+
+
 
 
