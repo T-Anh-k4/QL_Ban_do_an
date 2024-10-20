@@ -110,7 +110,8 @@ public partial class QlbandoanContext : DbContext
             entity.ToTable("MONAN");
 
             entity.Property(e => e.MaMonAn).ValueGeneratedNever();
-            entity.Property(e => e.Anh).HasColumnType("image");
+            entity.Property(e => e.Anh).HasMaxLength(100)
+                .HasColumnName("Anh");
             entity.Property(e => e.DonGiaBan).HasColumnType("money");
             entity.Property(e => e.TenHh)
                 .HasMaxLength(100)
