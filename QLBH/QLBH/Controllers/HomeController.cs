@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace QLBH.Controllers
 {
@@ -14,10 +16,15 @@ namespace QLBH.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            var lstsanpham = db.Monans.ToList();
-            return View(lstsanpham);
+            // phân trang
+            int pageSize = 8;
+            int pageNumber = page ==null||page<0?1:page.Value;
+            var lstsanpham = db.Monans.AsNoTracking().OrderBy(x=>x.TenHh);
+            PagedList<Monan> lst =new PagedList<Monan>(lstsanpham,pageNumber,pageSize);
+
+            return View(lst);
         }
 
         public IActionResult Privacy()

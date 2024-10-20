@@ -1,4 +1,4 @@
-@font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Regular.ttf') format('truetype');font-weight:400;font-display:fallback}
+﻿@font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Regular.ttf') format('truetype');font-weight:400;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Light.ttf') format('truetype');font-weight:300;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Medium.ttf') format('truetype');font-weight:500;font-display:fallback}
 @font-face{font-family:'SFProDisplay';src:url('../font/SFPRODISPLAY/SFProDisplay-Bold.ttf') format('truetype');font-weight:bold;font-display:fallback}
@@ -782,7 +782,8 @@ header {
 
 /* Page Nav  */
 
-.page-nav,.page-nav-list {
+
+.page-nav, .page-nav-list {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -802,11 +803,12 @@ header {
     font-size: 15px;
 }
 
-.page-nav-item.active a,.page-nav-item a:hover {
+.page-nav-item.active a, .page-nav-item a:hover {
     background-color: var(--red);
     color: var(--white);
     border: 2px solid var(--red);
 }
+
 
 /*Modal Box*/
 .modal {
