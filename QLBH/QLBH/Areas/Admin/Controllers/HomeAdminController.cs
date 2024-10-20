@@ -14,9 +14,6 @@ namespace QLBH.Areas.Admin.Controllers
       
             return View();
         }
-        public IActionResult DanhMucSanPham()
-        {
-            return View();
-        }
+
     }
 }
