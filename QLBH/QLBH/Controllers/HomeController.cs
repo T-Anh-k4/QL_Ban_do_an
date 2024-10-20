@@ -27,6 +27,13 @@ namespace QLBH.Controllers
             return View(lst);
         }
 
+        public IActionResult SanPhamTheoLoai(int maloai)
+        {
+            List<Monan> lstsanpham = db.Monans.Where(x => x.MaLoai == maloai).OrderBy(x => x.TenHh).ToList();
+            return View(lstsanpham); 
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
