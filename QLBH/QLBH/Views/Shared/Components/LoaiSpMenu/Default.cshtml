@@ -42,7 +42,7 @@
             <li class="menu-list-item"><a href="" class="menu-link">Trang chủ</a></li>
             @foreach(var item in Model)
             {
-                <li class="menu-list-item"><a href="" class="menu-link">@item.TenLoai</a></li>
+                <li class="menu-list-item"><a asp-controller="Home" asp-action ="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai" class="menu-link">@item.TenLoai</a></li>
 
             }
         </ul>

@@ -37,11 +37,11 @@
 
 
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), new PagedListRenderOptions
-   {
-       ContainerDivClasses = new[] { "page-nav" }, // Thêm class cho div bao quanh
-       UlElementClasses = new[] { "page-nav-list" }, // Thêm class cho ul
-       LiElementClasses = new[] { "page-nav-item" }, // Thêm class cho li
-   })
+      {
+          ContainerDivClasses = new[] { "page-nav" }, // Thêm class cho div bao quanh
+          UlElementClasses = new[] { "page-nav-list" }, // Thêm class cho ul
+          LiElementClasses = new[] { "page-nav-item" }, // Thêm class cho li
+      })
 
 
 
