@@ -20,19 +20,22 @@ namespace QLBH.Controllers
         {
             // phân trang
             int pageSize = 8;
-            int pageNumber = page ==null||page<0?1:page.Value;
-            var lstsanpham = db.Monans.AsNoTracking().OrderBy(x=>x.TenHh);
-            PagedList<Monan> lst =new PagedList<Monan>(lstsanpham,pageNumber,pageSize);
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            var lstsanpham = db.Monans.AsNoTracking().OrderBy(x => x.TenHh);
+            PagedList<Monan> lst = new PagedList<Monan>(lstsanpham, pageNumber, pageSize);
 
             return View(lst);
         }
 
-        public IActionResult SanPhamTheoLoai(int maloai)
+        public IActionResult SanPhamTheoLoai(int maloai, int? page)
         {
-            List<Monan> lstsanpham = db.Monans.Where(x => x.MaLoai == maloai).OrderBy(x => x.TenHh).ToList();
-            return View(lstsanpham); 
+            int pageSize = 8;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            var lstsanpham = db.Monans.AsNoTracking().Where(x => x.MaLoai == maloai).OrderBy(x => x.TenHh);
+            PagedList<Monan> lst = new PagedList<Monan>(lstsanpham, pageNumber, pageSize);
+            ViewBag.maloai = maloai;
+            return View(lst);
         }
-
 
         public IActionResult Privacy()
         {

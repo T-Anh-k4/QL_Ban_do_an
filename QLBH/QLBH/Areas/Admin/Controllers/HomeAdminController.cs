@@ -8,17 +8,13 @@ namespace QLBH.Areas.Admin.Controllers
     [Route("admin/homeadmin")]
     public class HomeAdminController : Controller
     {
-        Monan db = new Monan();
+        QlbandoanContext db = new QlbandoanContext();
         [Route("")]
-        [Route("index")]
-        public IActionResult Index()
-        {
-      
-            return View();
-        }
+        [Route("danhmucsanpham")]
         public IActionResult DanhMucSanPham()
         {
-            return View();
+            var lstsanpham = db.Monans.ToList();
+            return View(lstsanpham);
         }
     }
 }
