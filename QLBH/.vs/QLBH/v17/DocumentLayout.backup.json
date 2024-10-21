@@ -46,8 +46,7 @@
               "RelativeToolTip": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\DanhMucSanPham.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T04:30:03.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:30:03.059Z"
             },
             {
               "$type": "Document",
@@ -55,9 +54,9 @@
               "Title": "_LayoutAdmin.cshtml",
               "DocumentMoniker": "D:\\Thi\u1EBFt k\u1EBF web\\L\u1EACP TR\u00CCNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
-              "ToolTip": "D:\\Thi\u1EBFt k\u1EBF web\\L\u1EACP TR\u00CCNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml*",
-              "RelativeToolTip": "QLBH\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAAATAAAAAAAAAA==",
+              "ToolTip": "D:\\Thi\u1EBFt k\u1EBF web\\L\u1EACP TR\u00CCNH WEB\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "QLBH\\Areas\\Admin\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ViewState": "AgIAALgAAAAAAAAAAAAAAMsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-21T04:28:56.646Z",
               "EditorCaption": ""
@@ -72,8 +71,7 @@
               "RelativeToolTip": "QLBH\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T04:22:01.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:22:01.57Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "QLBH\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T04:20:08.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:20:08.247Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "QLBH\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:31:04.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T15:31:04.592Z"
             }
           ]
         },
