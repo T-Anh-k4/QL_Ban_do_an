@@ -1,0 +1,108 @@
+﻿@addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
+@model QLBH.Models.Monan
+
+@{
+    ViewData["Title"] = "ThemSanPhamMoi";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>ThemSanPhamMoi</h1>
+
+<h4>Monan</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="ThemSanPhamMoi">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       @*      <div class="form-group">
+                <label asp-for="MaMonAn" class="control-label"></label>
+                <input asp-for="MaMonAn" class="form-control" />
+                <span asp-validation-for="MaMonAn" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="MaLoai" class="control-label"></label>
+                <select asp-for="MaLoai" class ="form-control" asp-items="ViewBag.MaLoai"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenHh" class="control-label"></label>
+                <input asp-for="TenHh" class="form-control" />
+                <span asp-validation-for="TenHh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonGiaBan" class="control-label"></label>
+                <input asp-for="DonGiaBan" class="form-control" />
+                <span asp-validation-for="DonGiaBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anh" class="control-label"></label>
+                <input asp-for="Anh" class="form-control" />
+                <span asp-validation-for="Anh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="DanhMucSanPham">Back to List</a>
+</div>
+
+
+
+@section Styles {
+    <style>
+        /* Định dạng tổng thể cho form */
+        .form-group {
+            margin-bottom: 1.5rem; /* Tăng khoảng cách giữa các trường */
+        }
+
+        /* Định dạng tiêu đề */
+        h1 {
+            color: #333; /* Màu chữ tối */
+            font-size: 2rem; /* Kích thước chữ lớn */
+        }
+
+        /* Định dạng các nhãn */
+        .control-label {
+            font-weight: bold; /* Chữ đậm */
+            color: #555; /* Màu chữ xám */
+        }
+
+        /* Định dạng các input */
+        .form-control {
+            border: 1px solid #ced4da; /* Viền màu xám nhạt */
+            border-radius: 0.5rem; /* Bo góc cho các ô nhập liệu */
+            padding: 0.75rem 1.25rem; /* Khoảng cách bên trong ô nhập liệu */
+        }
+
+        /* Định dạng button */
+        .btn-primary {
+            background-color: #007bff; /* Màu nền chính */
+            border-color: #007bff; /* Màu viền chính */
+            padding: 0.5rem 1rem; /* Khoảng cách cho nút */
+            font-size: 1rem; /* Kích thước chữ trong nút */
+            border-radius: 0.5rem; /* Bo góc cho nút */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Màu nền khi hover */
+            border-color: #0056b3; /* Màu viền khi hover */
+        }
+
+        /* Định dạng thông báo lỗi */
+        .text-danger {
+            font-size: 0.875rem; /* Kích thước chữ nhỏ hơn cho thông báo lỗi */
+        }
+
+        /* Định dạng liên kết quay lại */
+        a {
+            color: #007bff; /* Màu liên kết */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Gạch chân khi hover */
+        }
+    </style>
+}
