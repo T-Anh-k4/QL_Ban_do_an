@@ -6,11 +6,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>SuaLoaiSanPham</h1>
+<h1 class="centreH">Sửa loại sản phẩm</h1>
 
-<h4>Loaimonan</h4>
+<h4 class="centreH">Loại món ăn</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form method="post" asp-action="SuaLoaiSanPham">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -27,8 +27,8 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="LoaiSanPham">Back to List</a>
+<div class="text-center mt-4">
+    <a class="btn btn-secondary " asp-action="LoaiSanPham">Back to List</a>
 </div>
 @section Styles {
     <style>
@@ -40,6 +40,10 @@
         h1 {
             color: #333;
             font-size: 2rem;
+        }
+
+        .centreH {
+            text-align: center
         }
 
         .control-label {

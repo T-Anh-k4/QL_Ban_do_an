@@ -6,11 +6,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>ThemLoaiSanPhamMoi</h1>
+<h1 class="centreH">Thêm loại sản phẩm mới</h1>
 
-<h4>Loaimonan</h4>
+<h4 class ="centreH">Loại món ăn</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form method="post" asp-action="ThemLoaiSanPhamMoi">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -31,62 +31,60 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="LoaiSanPham">Back to List</a>
+<div class="text-center mt-4">
+    <a class="btn btn-secondary " asp-action="LoaiSanPham">Back to List</a>
 </div>
 
 @section Styles {
     <style>
         /* Định dạng tổng thể cho form */
         .form-group {
-            margin-bottom: 1.5rem; /* Tăng khoảng cách giữa các trường */
+            margin-bottom: 1.5rem; 
         }
 
-        /* Định dạng tiêu đề */
         h1 {
-            color: #333; /* Màu chữ tối */
-            font-size: 2rem; /* Kích thước chữ lớn */
+            color: #333; 
+            font-size: 2rem; 
         }
 
-        /* Định dạng các nhãn */
+        .centreH {
+            text-align: center
+        }
+
         .control-label {
-            font-weight: bold; /* Chữ đậm */
-            color: #555; /* Màu chữ xám */
+            font-weight: bold;
+            color: #555; 
         }
 
-        /* Định dạng các input */
         .form-control {
-            border: 1px solid #ced4da; /* Viền màu xám nhạt */
-            border-radius: 0.5rem; /* Bo góc cho các ô nhập liệu */
-            padding: 0.75rem 1.25rem; /* Khoảng cách bên trong ô nhập liệu */
+            border: 1px solid #ced4da; 
+            border-radius: 0.5rem; 
+            padding: 0.75rem 1.25rem; 
         }
 
-        /* Định dạng button */
         .btn-primary {
-            background-color: #007bff; /* Màu nền chính */
-            border-color: #007bff; /* Màu viền chính */
-            padding: 0.5rem 1rem; /* Khoảng cách cho nút */
-            font-size: 1rem; /* Kích thước chữ trong nút */
-            border-radius: 0.5rem; /* Bo góc cho nút */
+            background-color: #007bff; 
+            border-color: #007bff; 
+            padding: 0.5rem 1rem; 
+            font-size: 1rem; 
+            border-radius: 0.5rem; 
         }
 
         .btn-primary:hover {
-            background-color: #0056b3; /* Màu nền khi hover */
-            border-color: #0056b3; /* Màu viền khi hover */
+            background-color: #0056b3; 
+            border-color: #0056b3; 
         }
 
-        /* Định dạng thông báo lỗi */
         .text-danger {
-            font-size: 0.875rem; /* Kích thước chữ nhỏ hơn cho thông báo lỗi */
+            font-size: 0.875rem; 
         }
 
-        /* Định dạng liên kết quay lại */
         a {
-            color: #007bff; /* Màu liên kết */
+            color: #007bff; 
         }
 
         a:hover {
-            text-decoration: underline; /* Gạch chân khi hover */
+            text-decoration: underline;
         }
     </style>
 }

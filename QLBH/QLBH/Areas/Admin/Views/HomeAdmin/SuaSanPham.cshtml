@@ -7,11 +7,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>SuaSanPham</h1>
+<h1 class="centreH">Sửa sản phẩm</h1>
 
-<h4>Monan</h4>
+<h4 class="centreH">Món ăn</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form method="post" asp-action="SuaSanPham">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -43,8 +43,8 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="DanhMucSanPham">Back to List</a>
+<div class="text-center mt-4">
+    <a class="btn btn-secondary " asp-action="DanhMucSanPham">Back to List</a>
 </div>
 
 @section Styles {
@@ -52,6 +52,10 @@
         /* Định dạng tổng thể cho form */
         .form-group {
             margin-bottom: 1.5rem; 
+        }
+
+        .centreH{
+            text-align:center
         }
 
         h1 {
