@@ -6,10 +6,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 @addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
-<h1>LoaiSanPham</h1>
+<h1>Loại Sản Phẩm</h1>
 
 <p>
-    <a asp-action="ThemLoaiSanPhamMoi">Create New</a>
+    <a class="btn btn-sm btn-primary" asp-action="ThemLoaiSanPhamMoi">Create New</a>
 </p>
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
@@ -39,10 +39,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TenLoai)
             </td>
-            <td style="padding-left: 10%;">
+            <td style="padding-left: 22%;">
                                 <a class="btn btn-sm btn-primary" asp-action="SuaLoaiSanPham" asp-route-maSanPham="@item.MaLoai">Edit</a> |
 @*                 <a asp-action="Details" asp-route-id="@item.MaLoai">Details</a> |*@
-                                <a class="btn btn-sm btn-danger" asp-action="XoaLoaiSanPham" asp-route-maSanPham="@item.MaLoai">Delete</a>
+                                <a class="btn btn-sm btn-primary" asp-action="XoaLoaiSanPham" asp-route-maSanPham="@item.MaLoai">Delete</a>
             </td>
         </tr>
 }
@@ -84,9 +84,22 @@
             background-color: white;
         }
 
-            .page-nav-item.active a, .page-nav-item a:hover {
-                color: white;
-                background-color: red;
-            }
+        .page-nav-item.active a, .page-nav-item a:hover {
+            color: white;
+            background-color: red;
+        }
+
+        .btn-primary {
+            background-color: red;
+            border-color: red;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
     </style>
 }

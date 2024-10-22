@@ -6,11 +6,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>ThemSanPhamMoi</h1>
+<h1 class ="centreH">Thêm sản phẩm mới</h1>
 
-<h4>Monan</h4>
+<h4 class="centreH">Món ăn</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form method="post" asp-action="ThemSanPhamMoi">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -45,8 +45,8 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="DanhMucSanPham">Back to List</a>
+<div class="text-center mt-4">
+    <a class="btn btn-secondary " asp-action="DanhMucSanPham">Back to List</a>
 </div>
 
 
@@ -62,6 +62,9 @@
         h1 {
             color: #333; /* Màu chữ tối */
             font-size: 2rem; /* Kích thước chữ lớn */
+        }
+            .centreH{
+            text-align:center
         }
 
         /* Định dạng các nhãn */

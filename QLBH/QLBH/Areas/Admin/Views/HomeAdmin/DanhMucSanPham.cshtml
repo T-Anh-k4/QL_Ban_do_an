@@ -9,7 +9,7 @@
 <h2>Danh Mục Các Sản Phẩm</h2>
 
 <p>
-    <a asp-action="ThemSanPhamMoi">Create New</a>
+    <a class="btn btn-sm btn-primary" asp-action="ThemSanPhamMoi">Create New</a>
 </p>
 <p>@TempData["Message"]</p>
 <div class="container-fluid pt-4 px-4">
@@ -67,7 +67,7 @@
             <td>
                 <a class="btn btn-sm btn-primary" asp-action="SuaSanPham" asp-route-maSanPham="@item.MaMonAn">Edit</a> 
               @*<a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaMonAn">Details</a> | *@
-                <a class="btn btn-sm btn-danger" asp-action="XoaSanPham" asp-route-masanpham="@item.MaMonAn">Delete</a>
+                <a class="btn btn-sm btn-primary" asp-action="XoaSanPham" asp-route-masanpham="@item.MaMonAn">Delete</a>
            </td>
         </tr>
 }
@@ -114,6 +114,19 @@
                 color: white;
                 background-color: red;
             }
+
+            .btn-primary {
+            background-color: red;
+            border-color: red;
+            padding: 0.5rem 1rem; 
+            font-size: 1rem; 
+            border-radius: 0.5rem; 
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; 
+            border-color: #0056b3; 
+        }
     </style>
 }
 
