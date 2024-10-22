@@ -11,6 +11,7 @@
 <p>
     <a asp-action="ThemSanPhamMoi">Create New</a>
 </p>
+<p>@TempData["Message"]</p>
 <div class="container-fluid pt-4 px-4">
     <div class="bg-secondary text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -64,10 +65,10 @@
                 @Html.DisplayFor(modelItem => item.MaLoaiNavigation.MaLoai)
             </td> *@
             <td>
-                <a class="btn btn-sm btn-primary" asp-action="SuaSanPham" asp-route-maSanPham="@item.MaMonAn">Edit</a> |
-                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaMonAn">Details</a> |
-                <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@item.MaMonAn">Delete</a>
-            </td>
+                <a class="btn btn-sm btn-primary" asp-action="SuaSanPham" asp-route-maSanPham="@item.MaMonAn">Edit</a> 
+              @*<a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaMonAn">Details</a> | *@
+                <a class="btn btn-sm btn-danger" asp-action="XoaSanPham" asp-route-masanpham="@item.MaMonAn">Delete</a>
+           </td>
         </tr>
 }
     </tbody>
