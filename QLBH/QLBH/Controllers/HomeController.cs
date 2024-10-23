@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
+using QLBH.Models.Authentication;
 using System.Diagnostics;
 using X.PagedList;
 
@@ -15,10 +16,10 @@ namespace QLBH.Controllers
         {
             _logger = logger;
         }
-
+        [Authentication("Admin","Người dùng")]
         public IActionResult Index(int? page)
         {
-            // ph�n trang
+            // phân trang
             int pageSize = 8;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
             var lstsanpham = db.Monans.AsNoTracking().OrderBy(x => x.TenHh);
@@ -26,7 +27,7 @@ namespace QLBH.Controllers
 
             return View(lst);
         }
-
+        //[Authentication]
         public IActionResult SanPhamTheoLoai(int maloai, int? page)
         {
             int pageSize = 8;
@@ -47,5 +48,7 @@ namespace QLBH.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
     }
 }

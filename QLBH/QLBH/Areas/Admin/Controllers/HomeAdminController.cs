@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
+using QLBH.Models.Authentication;
 using X.PagedList;
 
 namespace QLBH.Areas.Admin.Controllers
@@ -9,6 +10,7 @@ namespace QLBH.Areas.Admin.Controllers
     [Area("admin")]
     [Route("admin")]
     [Route("admin/homeadmin")]
+    [Authentication("Admin")]
     public class HomeAdminController : Controller
     {
         private readonly QlbandoanContext db;
@@ -18,8 +20,14 @@ namespace QLBH.Areas.Admin.Controllers
             db = context;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [Route("")]
         [Route("danhmucsanpham")]
+        //[Authentication("Admin")]
         public IActionResult DanhMucSanPham(int? page)
         {
             int pageSize = 10;
