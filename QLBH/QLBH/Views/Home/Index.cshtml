@@ -11,14 +11,14 @@
     <div class="col-product">
         <article class="card-product">
             <div class="card-header">
-                <a href="#" class="card-image-link" onclick="detailProduct(1)">
+                    <a asp-controller="Home" asp-action="ChiTietMonAn" asp-route-maMonAn="@item.MaMonAn" class="card-image-link" >
                     <img class="card-image" src="@Url.Content("../assets/img/products/" + item.Anh)" alt="Nấm đùi gà xào cháy tỏi">
                 </a>
             </div>
             <div class="food-info">
                 <div class="card-content">
                     <div class="card-title">
-                        <a href="#" class="card-title-link" onclick="detailProduct(1)">@item.TenHh</a>
+                            <a asp-controller="Home" asp-action="ChiTietMonAn" asp-route-maMonAn="@item.MaMonAn" class="card-title-link">@item.TenHh</a>@* class="card-title-link" onclick="detailProduct(1)" *@
                     </div>
                 </div>
                 <div class="card-footer">
@@ -26,7 +26,7 @@
                         <span class="current-price">@item.DonGiaBan</span>
                     </div>
                     <div class="product-buy">
-                        <button onclick="detailProduct(1)" class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>
+                            <button  class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>
                     </div>
                 </div>
             </div>

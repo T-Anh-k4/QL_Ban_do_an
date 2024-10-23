@@ -7,7 +7,7 @@ public partial class Hoadonban
 {
     public int SoHdb { get; set; }
 
-    public int MaKh { get; set; }
+    public int? MaKh { get; set; }
 
     public DateTime? NgayDatHang { get; set; }
 
@@ -17,5 +17,5 @@ public partial class Hoadonban
 
     public virtual ICollection<Chitiethoadon> Chitiethoadons { get; set; } = new List<Chitiethoadon>();
 
-    public virtual Khachhang MaKhNavigation { get; set; } = null!;
+    public virtual Khachhang? MaKhNavigation { get; set; }
 }

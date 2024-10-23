@@ -17,6 +17,8 @@ public partial class QlbandoanContext : DbContext
 
     public virtual DbSet<Chitiethoadon> Chitiethoadons { get; set; }
 
+    public virtual DbSet<Chitietmonan> Chitietmonans { get; set; }
+
     public virtual DbSet<Hoadonban> Hoadonbans { get; set; }
 
     public virtual DbSet<Khachhang> Khachhangs { get; set; }
@@ -29,27 +31,48 @@ public partial class QlbandoanContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-T4N0A0R\\SQLEXPRESS;Initial Catalog=QLBANDOAN;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        => optionsBuilder.UseSqlServer("Data Source=NQH\\SQLEXPRESS;Initial Catalog=QLBANDOAN;Integrated Security=True;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Chitiethoadon>(entity =>
         {
-            entity.HasKey(e => new { e.SoHdb, e.MaMonAn });
+            entity.HasKey(e => new { e.SoHdb, e.MaChiTietSp });
 
             entity.ToTable("CHITIETHOADON");
 
             entity.Property(e => e.SoHdb).HasColumnName("SoHDB");
+            entity.Property(e => e.MaChiTietSp).HasColumnName("MaChiTietSP");
 
-            entity.HasOne(d => d.MaMonAnNavigation).WithMany(p => p.Chitiethoadons)
-                .HasForeignKey(d => d.MaMonAn)
+            entity.HasOne(d => d.MaChiTietSpNavigation).WithMany(p => p.Chitiethoadons)
+                .HasForeignKey(d => d.MaChiTietSp)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_CHITIETHOADON_MONAN");
+                .HasConstraintName("FK_CHITIETHOADON_CHITIETMONAN");
 
             entity.HasOne(d => d.SoHdbNavigation).WithMany(p => p.Chitiethoadons)
                 .HasForeignKey(d => d.SoHdb)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_CHITIETHOADON_HOADONBAN");
+        });
+
+        modelBuilder.Entity<Chitietmonan>(entity =>
+        {
+            entity.HasKey(e => e.MaChiTietSp);
+
+            entity.ToTable("CHITIETMONAN");
+
+            entity.Property(e => e.MaChiTietSp)
+                .ValueGeneratedNever()
+                .HasColumnName("MaChiTietSP");
+            entity.Property(e => e.AnhDaiDien)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.ThanhTien).HasColumnType("money");
+
+            entity.HasOne(d => d.MaMonAnNavigation).WithMany(p => p.Chitietmonans)
+                .HasForeignKey(d => d.MaMonAn)
+                .HasConstraintName("FK_CHITIETMONAN_MONAN");
         });
 
         modelBuilder.Entity<Hoadonban>(entity =>
@@ -70,7 +93,6 @@ public partial class QlbandoanContext : DbContext
 
             entity.HasOne(d => d.MaKhNavigation).WithMany(p => p.Hoadonbans)
                 .HasForeignKey(d => d.MaKh)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_HOADONBAN_KHACHHANG");
         });
 
@@ -110,8 +132,10 @@ public partial class QlbandoanContext : DbContext
             entity.ToTable("MONAN");
 
             entity.Property(e => e.MaMonAn).ValueGeneratedNever();
-            entity.Property(e => e.Anh).HasMaxLength(100)
-                .HasColumnName("Anh");
+            entity.Property(e => e.Anh)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .IsFixedLength();
             entity.Property(e => e.DonGiaBan).HasColumnType("money");
             entity.Property(e => e.TenHh)
                 .HasMaxLength(100)
@@ -119,7 +143,6 @@ public partial class QlbandoanContext : DbContext
 
             entity.HasOne(d => d.MaLoaiNavigation).WithMany(p => p.Monans)
                 .HasForeignKey(d => d.MaLoai)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_MONAN_LOAIMONAN");
         });
 

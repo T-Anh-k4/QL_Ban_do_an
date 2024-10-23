@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
+using QLBH.ViewModels;
 using System.Diagnostics;
 using X.PagedList;
 
@@ -36,7 +37,17 @@ namespace QLBH.Controllers
             ViewBag.maloai = maloai;
             return View(lst);
         }
-
+        public IActionResult ChiTietMonAn(int maMonAn)
+        {
+            var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+            var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+            var homeProductDetailViewModel = new HomeProductDetailViewModel 
+            { 
+                monan = monAn,
+                chitietmonan = chiTietmonAn
+            };
+            return View(homeProductDetailViewModel);
+        }
         public IActionResult Privacy()
         {
             return View();
