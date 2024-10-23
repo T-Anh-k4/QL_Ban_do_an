@@ -42,10 +42,34 @@
             <li class="menu-list-item"><a href="" class="menu-link">Trang chủ</a></li>
             @foreach(var item in Model)
             {
-                <li class="menu-list-item"><a asp-controller="Home" asp-action ="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai" class="menu-link">@item.TenLoai</a></li>
-
+                var getUrl = "https://localhost:7196/api/productsapi/" + @item.MaLoai;
+                <li><a class="menu-link" style="cursor:pointer" onclick="showProductsByCategory('@getUrl')">@item.TenLoai</a></li>
+                @*                 <li class="menu-list-item"><a asp-controller="Home" asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai" class="menu-link">@item.TenLoai</a></li>
+ *@
             }
         </ul>
     </div>
 </nav>
+
+<script>
+    function showProductsByCategory(getUrl) {
+        var str = '';
+        $.ajax({
+            type: 'Get',
+            url: getUrl,
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (key, val) {
+                    str += '<p>' + val.TenHh + '</p>';
+                });
+
+                $('#displayProducts').html(str);
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+
+        });
+    } 
+</script>
 

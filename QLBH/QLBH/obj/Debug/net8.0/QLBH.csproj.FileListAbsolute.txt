@@ -320,3 +320,8 @@ D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\run
 D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\X.PagedList.dll
 D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
 D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\obj\Debug\net8.0\QLBH.MvcApplicationPartsAssemblyInfo.cs
+D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
