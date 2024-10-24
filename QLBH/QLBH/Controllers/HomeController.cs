@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+Ôªøusing Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
+using QLBH.Models.Authentication;
 using QLBH.ViewModels;
 using System.Diagnostics;
 using X.PagedList;
@@ -16,7 +17,7 @@ namespace QLBH.Controllers
         {
             _logger = logger;
         }
-
+        [Authentication("Admin", "Ng∆∞·ªùi d√πng")]
         public IActionResult Index(int? page, int? maMonAn)
         {
             int pageSize = 8;
@@ -24,7 +25,7 @@ namespace QLBH.Controllers
             var lstsanpham = db.Monans.AsNoTracking().OrderBy(x => x.TenHh);
             PagedList<Monan> lst = new PagedList<Monan>(lstsanpham, pageNumber, pageSize);
 
-            // L?y chi ti?t mÛn ?n n?u cÛ m„ mÛn ?n
+            // L?y chi ti?t m√≥n ?n n?u c√≥ m√£ m√≥n ?n
             HomeProductDetailViewModel homeProductDetailViewModel = null;
             if (maMonAn.HasValue)
             {
@@ -37,8 +38,8 @@ namespace QLBH.Controllers
                 };
             }
 
-            // Tr? v? view kËm c? danh s·ch v‡ chi ti?t (n?u cÛ)
-            ViewBag.CurrentPage = page ?? 1; // Gi· tr? trang hi?n t?i
+            // Tr? v? view k√®m c? danh s√°ch v√† chi ti?t (n?u c√≥)
+            ViewBag.CurrentPage = page ?? 1; // Gi√° tr? trang hi?n t?i
             ViewBag.DetailProduct = homeProductDetailViewModel;
             return View(lst);
         }

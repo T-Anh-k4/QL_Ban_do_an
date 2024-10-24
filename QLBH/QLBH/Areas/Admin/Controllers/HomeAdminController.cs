@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
 using QLBH.Models.Authentication;
 using X.PagedList;
+using QLBH.Models.Dashboard;
 
 namespace QLBH.Areas.Admin.Controllers
 {
@@ -20,14 +21,26 @@ namespace QLBH.Areas.Admin.Controllers
             db = context;
         }
 
+        [Route("")]
+        [Route("Index")]
         public IActionResult Index()
         {
-            return View();
+            var userCount = db.Nguoidungs.Count();
+            var productCount = db.Monans.Count();
+            var orderCount = db.Hoadonbans.Count();
+
+            var model = new AdminDashboardViewModel
+            {
+                UserCount = userCount,
+                ProductCount = productCount,
+                OrderCount = orderCount
+            };
+
+            return View(model); // Truyền model vào Vie
         }
 
         [Route("")]
         [Route("danhmucsanpham")]
-        //[Authentication("Admin")]
         public IActionResult DanhMucSanPham(int? page)
         {
             int pageSize = 10;

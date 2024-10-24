@@ -12,4 +12,6 @@ public partial class Nguoidung
     public string? MatKhau { get; set; }
 
     public string? Loai { get; set; }
+
+    public string Email { get; set; } = null!;
 }
