@@ -11,14 +11,14 @@
     <div class="col-product">
         <article class="card-product">
             <div class="card-header">
-                    <a asp-controller="Home" asp-action="ChiTietMonAn" asp-route-maMonAn="@item.MaMonAn" class="card-image-link" >
-                    <img class="card-image" src="@Url.Content("../assets/img/products/" + item.Anh)" alt="Nấm đùi gà xào cháy tỏi">
+                    <a asp-controller="Home" asp-action="Index" asp-route-maMonAn="@item.MaMonAn" asp-route-page="@ViewBag.CurrentPage" class="card-image-link">
+                    <img class="card-image" src="@Url.Content("~/assets/img/products/" + item.Anh)" alt="Nấm đùi gà xào cháy tỏi">
                 </a>
             </div>
             <div class="food-info">
                 <div class="card-content">
                     <div class="card-title">
-                            <a asp-controller="Home" asp-action="ChiTietMonAn" asp-route-maMonAn="@item.MaMonAn" class="card-title-link">@item.TenHh</a>@* class="card-title-link" onclick="detailProduct(1)" *@
+                            <a asp-controller="Home" asp-action="Index" asp-route-maMonAn="@item.MaMonAn" asp-route-page="@ViewBag.CurrentPage" class="card-title-link">@item.TenHh</a>@* class="card-title-link" onclick="detailProduct(1)" *@
                     </div>
                 </div>
                 <div class="card-footer">
@@ -34,7 +34,47 @@
     </div>
 }
 </div>
-
+@if (ViewBag.DetailProduct != null)
+{
+    //chi tiet san pham
+    var detail = ViewBag.DetailProduct;
+    <div class="modal product-detail open">
+        <button class="modal-close close-popup"><i class="fa-thin fa-xmark"></i></button>
+        <div class="modal-container mdl-cnt" id="product-detail-content">
+            <div class="modal-header">
+                <img class="product-image" src=@Url.Content( "~/assets/img/products/" + @detail.monan.Anh) alt="">
+            </div>
+            <div class="modal-body">
+                <h2 class="product-title">@detail.monan.TenHh</h2>
+                <div class="product-control">
+                    <div class="priceBox">
+                        <span class="current-price">@detail.monan.DonGiaBan</span>
+                    </div>
+                    <div class="buttons_added">
+                        <input class="minus is-form" type="button" value="-" onclick="decreasingNumber(this)">
+                        <input class="input-qty" max="100" min="1" name="" type="number" value=@detail.chitietmonan.SoLuong>
+                        <input class="plus is-form" type="button" value="+" onclick="increasingNumber(this)">
+                    </div>
+                </div>
+                <p class="product-description"></p> @* thêm vào csdl thuộc tính GioiThieu sau *@
+            </div>
+            <div class="notebox">
+                <p class="notebox-title">Ghi chú</p>
+                <textarea class="text-note" id="popup-detail-note" placeholder="Nhập thông tin cần lưu ý..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <div class="price-total">
+                    <span class="thanhtien">Thành tiền</span>
+                    <span class="price">@detail.monan.DonGiaBan * @detail.chitietmonan.SoLuong </span>
+                </div>
+                <div class="modal-footer-control">
+                    <button class="button-dathangngay" data-product="1">Đặt hàng ngay</button>
+                    <button class="button-dat" id="add-cart" onclick="animationCart()"><i class="fa-light fa-basket-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), new PagedListRenderOptions
       {
