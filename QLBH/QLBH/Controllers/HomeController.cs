@@ -1,7 +1,7 @@
-Ôªøusing Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
-using QLBH.Models.Authentication;
+using QLBH.ViewModels;
 using System.Diagnostics;
 using X.PagedList;
 
@@ -16,18 +16,34 @@ namespace QLBH.Controllers
         {
             _logger = logger;
         }
-        [Authentication("Admin", "Ng∆∞·ªùi d√πng")]
-        public IActionResult Index(int? page)
+
+        public IActionResult Index(int? page, int? maMonAn)
         {
-            // ph√¢n trang
             int pageSize = 8;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
             var lstsanpham = db.Monans.AsNoTracking().OrderBy(x => x.TenHh);
             PagedList<Monan> lst = new PagedList<Monan>(lstsanpham, pageNumber, pageSize);
 
+            // L?y chi ti?t mÛn ?n n?u cÛ m„ mÛn ?n
+            HomeProductDetailViewModel homeProductDetailViewModel = null;
+            if (maMonAn.HasValue)
+            {
+                var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == maMonAn.Value);
+                var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == maMonAn.Value);
+                homeProductDetailViewModel = new HomeProductDetailViewModel
+                {
+                    monan = monAn,
+                    chitietmonan = chiTietmonAn
+                };
+            }
+
+            // Tr? v? view kËm c? danh s·ch v‡ chi ti?t (n?u cÛ)
+            ViewBag.CurrentPage = page ?? 1; // Gi· tr? trang hi?n t?i
+            ViewBag.DetailProduct = homeProductDetailViewModel;
             return View(lst);
         }
-        //[Authentication]
+
+
         public IActionResult SanPhamTheoLoai(int maloai, int? page)
         {
             int pageSize = 8;
@@ -37,7 +53,17 @@ namespace QLBH.Controllers
             ViewBag.maloai = maloai;
             return View(lst);
         }
-
+        //public IActionResult ChiTietMonAn(int maMonAn)
+        //{
+        //    var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+        //    var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+        //    var homeProductDetailViewModel = new HomeProductDetailViewModel 
+        //    { 
+        //        monan = monAn,
+        //        chitietmonan = chiTietmonAn
+        //    };
+        //    return View(homeProductDetailViewModel);
+        //}
         public IActionResult Privacy()
         {
             return View();
