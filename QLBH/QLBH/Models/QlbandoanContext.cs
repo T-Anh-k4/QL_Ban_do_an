@@ -150,9 +150,8 @@ public partial class QlbandoanContext : DbContext
         {
             entity.ToTable("NGUOIDUNG");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Loai).HasMaxLength(50);
             entity.Property(e => e.MatKhau).HasMaxLength(255);
             entity.Property(e => e.TaiKhoan).HasMaxLength(100);

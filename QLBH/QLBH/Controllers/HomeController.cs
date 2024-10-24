@@ -16,7 +16,7 @@ namespace QLBH.Controllers
         {
             _logger = logger;
         }
-        [Authentication("Admin","Người dùng")]
+        [Authentication("Admin", "Người dùng")]
         public IActionResult Index(int? page)
         {
             // phân trang
@@ -48,7 +48,5 @@ namespace QLBH.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
     }
 }

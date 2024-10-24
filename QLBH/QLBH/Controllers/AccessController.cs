@@ -31,6 +31,7 @@ namespace QLBH.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+                ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng.");
             }
             return View(); 
         }
@@ -41,5 +42,32 @@ namespace QLBH.Controllers
             HttpContext.Session.Remove("TaiKhoan");
             return RedirectToAction("Login", "Access");
         }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [HttpPost]
+        public IActionResult Register(Nguoidung newUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingUser = db.Nguoidungs.FirstOrDefault(x => x.TaiKhoan == newUser.TaiKhoan);
+                if (existingUser == null)
+                {
+                    newUser.Loai = "Người dùng";
+                    db.Nguoidungs.Add(newUser);
+                    db.SaveChanges();
+                    TempData["SuccessMessage"] = "Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.";
+                    return RedirectToAction("Login", "Access");
+                }
+                ViewBag.ErrorMessage = "Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác.";
+            }
+            return View(newUser);
+        }
+
     }
 }

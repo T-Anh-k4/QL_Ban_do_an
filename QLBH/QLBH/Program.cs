@@ -16,6 +16,7 @@ builder.Services.AddDbContext<QlbandoanContext>(options =>
 // Add scoped services (repositories)
 builder.Services.AddScoped<ILoaiSpRepository, LoaiSpRepository>();
 
+
 // Add session services
 builder.Services.AddSession();
 
