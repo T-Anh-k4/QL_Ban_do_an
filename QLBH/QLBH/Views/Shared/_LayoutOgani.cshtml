@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="~/assets/css/home-responsive.css">
     <link rel="stylesheet" href="~/assets/css/toast-message.css">
     <link rel="stylesheet" href="~/assets/font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <header>
@@ -56,10 +58,11 @@
                 </div>
                 <div class="header-middle-right">
                     <ul class="header-middle-right-list">
-                        <li class="header-middle-right-item dnone open" onclick="openSearchMb()">
-                            <div class="cart-icon-menu">
-                                <i class="fa-light fa-magnifying-glass"></i>
-                            </div>
+                        <li class="header-middle-right-item dnone open" onclick="openSearchMb()">   
+                             <div class="cart-icon-menu">
+                               <i class="fa-light fa-magnifying-glass"></i> 
+                            </div> 
+                           
                         </li>
                         <li class="header-middle-right-item close" onclick="closeSearchMb()">
                             <div class="cart-icon-menu">
@@ -80,7 +83,7 @@
                         </li>
                         <li class="header-middle-right-item open" onclick="openCart()">
                             <div class="cart-icon-menu">
-                                <i class="fa-light fa-basket-shopping"></i>
+                                <a asp-controller="Home" asp-action="GioHang"><i class="fa-light fa-basket-shopping"></i></a>
                                 <span class="count-product-cart">0</span>
                             </div>
                             <span>Giỏ hàng</span>
@@ -94,9 +97,7 @@
                                     <button class="form-ground-btn">Quản lý</button>
                                 </a>
                             </li>
-                        }
-
-                        
+                        }                       
                     </ul>
                 </div>
             </div>
@@ -158,7 +159,9 @@
                     <h2 class="home-title">Khám phá thực đơn của chúng tôi</h2>
                 </div>
 
-                <div id="displayProducts">@RenderBody()</div>
+                <div id="displayProducts">@RenderBody()
+                    @RenderSection("Scripts", required: false)
+                </div>
                 
                 <!--<partial name="MainLayout" />-->
             </div>

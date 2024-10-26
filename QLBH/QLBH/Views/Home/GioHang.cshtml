@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "GioHang";
+    Layout = "~/Views/Shared/_LayoutOgani.cshtml";
+}
+
+@model IEnumerable<QLBH.Models.ProductModels.CartItem>
+<div class="modal-cart open">
+    <div class="cart-container">
+        <div class="cart-header">
+            <h3 class="cart-header-title"><i class="fa-regular fa-basket-shopping-simple"></i> Giỏ hàng</h3>
+            <button class="cart-close" onclick="closeCart()"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body">
+            @if (!Model.Any()) // Kiểm tra nếu giỏ hàng rỗng
+            {
+                <div class="gio-hang-trong" style="display: flex;">
+                    <i class="fa-thin fa-cart-xmark"></i>
+                    <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+                </div>
+            }
+            else
+            {
+                <ul class="cart-list">
+                    @foreach (var item in Model) // Vòng lặp foreach để hiển thị các sản phẩm trong giỏ hàng
+                    {
+                        <li class="cart-item" data-id="@item.Mahh">
+                            <!-- Sử dụng data-id để lưu mã sản phẩm -->
+                            <div class="cart-item-info">
+                                <p class="cart-item-title">
+                                    @item.TenHH
+                                </p>
+                                <span class="cart-item-price price">
+                                    @String.Format("{0:N0}", item.dongia * item.SoLuong) &nbsp;₫ <!-- Hiển thị giá với định dạng số -->
+                                </span>
+                            </div>
+                            <p class="product-note"><i class="fa-light fa-pencil"></i><span>Không có ghi chú</span></p>
+                            <div class="cart-item-control">
+                                <button class="cart-item-delete" onclick="deleteCartItem(@item.Mahh, this)">Xóa</button>
+                                <div class="buttons_added">
+                                    <input class="minus is-form" type="button" value="-" onclick="decreasingNumber(this)">
+                                    <input class="input-qty" max="100" min="1" type="number" value="@item.SoLuong" name="quantity" onchange="updateQuantity(@item.Mahh, this.value)">
+                                    <input class="plus is-form" type="button" value="+" onclick="increasingNumber(this)">
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+
+
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-price">
+                <p class="text-tt">Tổng tiền:</p>
+                <p class="text-price">
+                    @String.Format("{0:C}", Model.Sum(x => x.dongia * x.SoLuong)) // Tính tổng tiền
+                    &nbsp;₫
+                </p>
+            </div>
+            <div class="cart-footer-payment">
+                <button class="them-mon"><i class="fa-regular fa-plus"></i> Thêm món</button>
+                <button class="thanh-toan @(Model.Any() ? "" : "disabled")">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateQuantity(productId, quantity) {
+            // Gửi yêu cầu cập nhật số lượng sản phẩm
+            $.ajax({
+                url: '/Home/UpdateQuantity', // Đường dẫn đến Action trong Controller
+                type: 'POST',
+                data: { id: productId, quantity: quantity },
+                success: function (response) {
+                    if (response.success) {
+                        location.reload(); // Tải lại trang để cập nhật giỏ hàng
+                    } else {
+                        alert("Cập nhật không thành công.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Có lỗi xảy ra khi cập nhật số lượng: ", error);
+                }
+            });
+        }
+    </script>
+}
+
