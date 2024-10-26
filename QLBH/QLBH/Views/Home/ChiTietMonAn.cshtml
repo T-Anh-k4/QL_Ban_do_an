@@ -2,6 +2,7 @@
     ViewData["Title"] = "ChiTietMonAn";
     Layout = "~/Views/Shared/_LayoutOgani.cshtml";
 }
+@addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
 @model QLBH.ViewModels.HomeProductDetailViewModel
 <div class="modal product-detail open">
     <button class="modal-close close-popup"><i class="fa-thin fa-xmark"></i></button>
@@ -30,10 +31,10 @@
         <div class="modal-footer">
             <div class="price-total">
                 <span class="thanhtien">Thành tiền</span>
-                <span class="price">@Model.monan.DonGiaBan * @Model.chitietmonan.SoLuong </span>
+                <span class="price">@Model.monan.DonGiaBan</span>
             </div>
             <div class="modal-footer-control">
-                <button class="button-dathangngay" data-product="1">Đặt hàng ngay</button>
+                <a class="button-dathangngay" data-product="1">Đặt hàng ngay</a>
                 <button class="button-dat" id="add-cart" onclick="animationCart()"><i class="fa-light fa-basket-shopping"></i></button>
             </div>
         </div>
