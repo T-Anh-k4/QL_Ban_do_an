@@ -675,6 +675,11 @@ header {
     padding: 10px;
     overflow: hidden;
 }
+#displayProducts {
+    display: flex; /* Sử dụng flexbox cho hiển thị nằm ngang */
+    flex-wrap: wrap; /* Cho phép các sản phẩm xuống dòng khi không đủ không gian */
+    justify-content: space-between; /* Để phân bổ không gian giữa các phần tử */
+}
 
 .card-product {
     background-color: var(--white);

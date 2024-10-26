@@ -1,4 +1,4 @@
-/* Css toast message */
+﻿/* Css toast message */
 .toast {
     align-items: center;
     background: #fff;
@@ -187,6 +187,7 @@
 .btn:hover {
     transform: scale(0.98);
 }
+
 
 @media (max-width: 575.98px){
     .toast {
