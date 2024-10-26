@@ -56,9 +56,8 @@ namespace QLBH.Controllers
 
             if (product != null)
             {
-                // Đảm bảo totalPrice là decimal
-                var totalPrice = (decimal)product.DonGiaBan * quantity;
-                return Json(new { totalPrice = totalPrice.ToString("N0")});
+                var totalPrice = product.DonGiaBan.Value * quantity;
+                return Json(new { totalPrice = totalPrice.ToString("N4") + "đ"});
             }
 
             return Json(new { totalPrice = "0" });
