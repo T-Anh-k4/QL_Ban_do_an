@@ -70,17 +70,54 @@
                         <a asp-controller="Home" asp-action="ThanhToan">
                             <button class="button-dathangngay" data-product="1" type="button">Đặt hàng ngay</button>
                         </a>
-                        <a asp-controller="Home" asp-action="ThemGioHang" asp-route-id="@detail.monan.MaMonAn">
-                            <button class="button-dat" id="add-cart" type="button" onclick="animationCart()">
+                            <button class="button-dat add-to-cart" data-product_id="@detail.monan.MaMonAn" id="add-cart" type="button" onclick="animationCart()">
                                 <i class="fa-light fa-basket-shopping"></i>
                             </button>
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
+    @* them vao gio hang *@
+    @section Scripts {
+    <style>
+        /*chinh giao dien them gio hang*/
+               .small-swal-popup {
+                   max-width: 300px; /* Điều chỉnh chiều rộng */
+                   font-size: 12px; /* Điều chỉnh cỡ chữ */
+               }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Thêm dòng này -->
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').click(function () {
+                var id = $(this).data("product_id");
 
-        <script>
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("ThemGioHang", "Home")",
+                    data: { Id: id },
+                    success: function (result) {
+                        if (result) {
+                            Swal.fire({
+                                title: "Thêm giỏ hàng thành công!",
+                                icon: "success",
+                                customClass: {
+                                    popup: 'small-swal-popup'  // Sử dụng class tùy chỉnh cho popup
+                                },
+                                confirmButtonText: "OK"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "@Url.Action("GioHang", "Home")";
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    }
+    <script>
             $(document).ready(function () {
                 const productId = '@detail.monan.MaMonAn';
 
@@ -119,7 +156,7 @@
                 $('#quantity').on('change', updateTotalPrice);
             });
         </script>
-    }
+}
 
 
 
