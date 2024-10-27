@@ -32,10 +32,12 @@
             </div>
         </article>
     </div>
+
 }
 </div>
+
  @if (ViewBag.DetailProduct != null)
-    {
+ {
         var detail = ViewBag.DetailProduct;
         <div class="modal product-detail open">
             <button class="modal-close close-popup"><i class="fa-thin fa-xmark"></i></button>
@@ -83,7 +85,7 @@
             </div>
         </div>
     @* them vao gio hang *@
-    @section Scripts {
+@section Scripts {
     <style>
         /*chinh giao dien them gio hang*/
                .small-swal-popup {
@@ -91,16 +93,17 @@
                    font-size: 12px; /* Điều chỉnh cỡ chữ */
                }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Thêm dòng này -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <script>
         $(document).ready(function () {
             $('.add-to-cart').click(function () {
                 var id = $(this).data("product_id");
+                var quantity = $('#quantity').val(); // Lấy số lượng từ input
 
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("ThemGioHang", "Home")",
-                    data: { Id: id },
+                    data: { Id: id, quantity: quantity },
                     success: function (result) {
                         if (result) {
                             Swal.fire({
@@ -112,7 +115,8 @@
                                 confirmButtonText: "OK"
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = "@Url.Action("GioHang", "Home")";
+                                    $('.modal-close.close-popup').click(); // Đóng modal khi thêm thành công
+                                     // window.location.href = "@Url.Action("GioHang", "Home")";
                                 }
                             });
                         }
@@ -121,7 +125,7 @@
             });
         });
     </script>
-    }
+} 
     <script>
             $(document).ready(function () {
                 const productId = '@detail.monan.MaMonAn';
