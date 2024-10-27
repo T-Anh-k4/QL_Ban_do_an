@@ -47,7 +47,7 @@
                     <h2 class="product-title">@detail.monan.TenHh</h2>
                     <div class="product-control">
                         <div class="priceBox">
-                            <span class="current-price" id="unit-price">@String.Format("{0:N0}", detail.monan.DonGiaBan)</span> <!-- Đơn giá -->
+                            <span class="current-price" id="unit-price">@String.Format("{0:N4}", detail.monan.DonGiaBan)</span> <!-- Đơn giá -->
                         </div>
                         <div class="buttons_added">
                             <input class="minus is-form" type="button" value="-" id="decreaseButton">
@@ -64,8 +64,13 @@
                 <div class="modal-footer">
                     <div class="price-total">
                         <span class="thanhtien">Thành tiền</span>
-                        <span class="price" id="total-price">@String.Format("{0:N0}", detail.monan.DonGiaBan)</span>
-                    </div>
+                    <span class="price" id="total-price">
+                        @(detail.monan.DonGiaBan != null
+                            ? String.Format("{0:N4}", detail.monan.DonGiaBan) + "đ"
+                            : "0.0000đ")
+                    </span>
+
+                </div>
                     <div class="modal-footer-control">
                         <a asp-controller="Home" asp-action="ThanhToan">
                             <button class="button-dathangngay" data-product="1" type="button">Đặt hàng ngay</button>
