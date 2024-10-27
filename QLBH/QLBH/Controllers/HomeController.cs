@@ -43,9 +43,7 @@ namespace QLBH.Controllers
                     chitietmonan = chiTietmonAn
                 };
             }
-
-            // Tr? v? view kèm c? danh sách và chi ti?t (n?u có)
-            ViewBag.CurrentPage = page ?? 1; // Giá tr? trang hi?n t?i
+            ViewBag.CurrentPage = page ?? 1; 
             ViewBag.DetailProduct = homeProductDetailViewModel;
             return View(lst);
         }

@@ -51,17 +51,17 @@
 </nav>
 <script>
     function showProductsByCategory(getUrl) {
-        var str = '<div class="row">'; // Mở thẻ <div class="row"> để chứa các cột
+        var str = '<div class="home-products" id="home-products">'; 
         $.ajax({
             type: 'GET',
             url: getUrl,
             dataType: 'json',
             success: function (data) {
                 $.each(data, function (key, val) {
-                    str += '<div class="col-product col-md-4">'; // Sửa lỗi mở thẻ <div> ở đây
+                    str += '<div class="col-product">'; 
                     str += '    <article class="card-product">';
                     str += '        <div class="card-header">';
-                    str += '            <a class="card-image-link">';
+                    str += '            <a href=\"/GioHang" class="card-image-link" onclick="openProductDetail(' + val.maMonAn + ')">'; 
                     var basePath = '@Url.Content("~/assets/img/products/")';
                     str += '                <img class="card-image" src="' + basePath + val.anh.trim() + '" alt="' + val.tenHh + '">';
                     str += '            </a>';
@@ -93,5 +93,28 @@
             }
         });
     }
+
 </script>
 
+@* function openProductDetail(maMonAn) {
+    $.ajax({
+        url: '@Url.Action("GetProductDetail", "Home")', // Điều chỉnh tên action và controller nếu cần
+        type: 'GET',
+        data: { maMonAn: maMonAn },
+        success: function(data) {
+            // Cập nhật modal với dữ liệu trả về
+            $('#product-detail-content .product-image').attr('src', '@Url.Content("~/assets/img/products/")' + data.Anh);
+            $('#product-detail-content .product-title').text(data.TenHh);
+            $('#unit-price').text(data.DonGiaBan.toFixed(4)); // Định dạng theo nhu cầu
+            $('#total-price').text(data.DonGiaBan.toFixed(4) + 'đ'); // Điều chỉnh định dạng tiền tệ
+            $('#quantity').val(1); // Đặt lại số lượng
+
+            // Mở modal
+            $('.modal.product-detail').addClass('open');
+        },
+        error: function() {
+            console.log("Đã xảy ra lỗi trong khi lấy chi tiết sản phẩm.");
+        }
+    });
+}
+ *@
