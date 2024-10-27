@@ -7,6 +7,7 @@ using QLBH.ViewModels;
 using System.Diagnostics;
 using QLBH.Helper;
 using X.PagedList;
+using Azure;
 
 namespace QLBH.Controllers
 {
@@ -73,15 +74,22 @@ namespace QLBH.Controllers
             ViewBag.maloai = maloai;
             return View(lst);
         }
-        //public IActionResult ChiTietMonAn(int maMonAn)
+        //public IActionResult ChiTietMonAn(int? page,int? id)
         //{
-        //    var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == maMonAn);
-        //    var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == maMonAn);
-        //    var homeProductDetailViewModel = new HomeProductDetailViewModel 
-        //    { 
-        //        monan = monAn,
-        //        chitietmonan = chiTietmonAn
-        //    };
+        //    int pageSize = 8;
+        //    int pageNumber = page == null || page < 0 ? 1 : page.Value;
+        //    HomeProductDetailViewModel homeProductDetailViewModel = null;
+        //    if (id.HasValue)
+        //    {
+        //        var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == id.Value);
+        //        var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == id.Value);
+        //        homeProductDetailViewModel = new HomeProductDetailViewModel
+        //        {
+        //            monan = monAn,
+        //            chitietmonan = chiTietmonAn
+        //        };
+        //    }
+        //    ViewBag.CurrentPage = page ?? 1; // Giá tr? trang hi?n t?i
         //    return View(homeProductDetailViewModel);
         //}
         public IActionResult Privacy()
@@ -133,9 +141,23 @@ namespace QLBH.Controllers
             HttpContext.Session.Set(CART_KEY, giohang);
             return RedirectToAction("GioHang");
         }
+        public async Task<IActionResult> Remove(int id)
+        {
+            var cart = HttpContext.Session.Get<List<CartItem>>(CART_KEY); // Lấy giỏ hàng từ session
+            cart.RemoveAll(p => p.Mahh == id);
+            if(cart.Count == 0)
+            {
+                HttpContext.Session.Remove(CART_KEY);
+            }
+            else
+            {
+                HttpContext.Session.Set(CART_KEY, cart);
+            }
+            return RedirectToAction("Index");
+        }
         [HttpPost]
         [Route("UpdateQuantity")]
-        public IActionResult UpdateQuantity(int id, int quantity)
+        public IActionResult UpdateQuantity(int id, int quantity=1)
         {
             var giohang = HttpContext.Session.Get<List<CartItem>>(CART_KEY); // Lấy giỏ hàng từ session
             var item = giohang.SingleOrDefault(p => p.Mahh == id); // Tìm sản phẩm theo mã

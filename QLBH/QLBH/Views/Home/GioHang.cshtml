@@ -29,17 +29,19 @@
                                 <p class="cart-item-title">
                                     @item.TenHH
                                 </p>
-                                <span class="cart-item-price price">
+                                <span class="cart-item-price price" data-cart_id="@item.Mahh" id="total-price">
                                     @String.Format("{0:N0}", item.dongia * item.SoLuong) &nbsp;₫ <!-- Hiển thị giá với định dạng số -->
                                 </span>
                             </div>
                             <p class="product-note"><i class="fa-light fa-pencil"></i><span>Không có ghi chú</span></p>
                             <div class="cart-item-control">
-                                <button class="cart-item-delete" onclick="deleteCartItem(@item.Mahh, this)">Xóa</button>
+                                <a class="remove-cart" data-cart_id ="@item.Mahh">
+                                    <button class="cart-item-delete"  onclick="deleteCartItem(@item.Mahh, this)">Xóa</button>
+                                </a>
                                 <div class="buttons_added">
-                                    <input class="minus is-form" type="button" value="-" onclick="decreasingNumber(this)">
-                                    <input class="input-qty" max="100" min="1" type="number" value="@item.SoLuong" name="quantity" onchange="updateQuantity(@item.Mahh, this.value)">
-                                    <input class="plus is-form" type="button" value="+" onclick="increasingNumber(this)">
+                                    <input class="minus is-form" type="button" value="-" id="decreaseButton">
+                                    <input class="input-qty" id="quantity" max="100" min="1" type="number" value="@item.SoLuong" name="quantity">
+                                    <input class="plus is-form" type="button" value="+" id="increaseButton" >
                                 </div>
                             </div>
                         </li>
@@ -53,7 +55,7 @@
             <div class="cart-total-price">
                 <p class="text-tt">Tổng tiền:</p>
                 <p class="text-price">
-                    @String.Format("{0:C}", Model.Sum(x => x.dongia * x.SoLuong)) // Tính tổng tiền
+                    @String.Format("{0:C}", Model.Sum(x => x.dongia * x.SoLuong)) 
                     &nbsp;₫
                 </p>
             </div>
@@ -85,6 +87,61 @@
                 }
             });
         }
+    </script> 
+    <script>
+        $(document).ready(function () {
+            $('.remove-cart').click(function () {
+                var id = $(this).data("cart_id");
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Remove", "Home")",
+                    data: { Id: id },
+                    success: function (result) {
+                        if (result) {
+                            $('.cart-item[data-id="' + id + '"]').remove();
+                            location.reload(); 
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            function updateTotalPrice() {
+                const quantity = parseInt($('#quantity').val());
+                var productId = $(this).data("cart_id");
+                $.ajax({
+                    url: '@Url.Action("GetTotalPrice", "Home")',
+                    type: 'GET',
+                    data: { productId: productId, quantity: quantity },
+                    success: function (data) {
+                        $('#total-price').text(data.totalPrice);
+                    },
+                    error: function () {
+                        console.log("Error occurred while updating total price.");
+                    }
+                });
+            }
+
+            $('#decreaseButton').on('click', function () {
+                const quantityInput = $('#quantity');
+                if (quantityInput.val() > 1) {
+                    quantityInput.val(parseInt(quantityInput.val()) - 1);
+                    updateTotalPrice();
+                }
+            });
+
+            $('#increaseButton').on('click', function () {
+                const quantityInput = $('#quantity');
+                if (quantityInput.val() < 100) {
+                    quantityInput.val(parseInt(quantityInput.val()) + 1);
+                    updateTotalPrice();
+                }
+            });
+
+            $('#quantity').on('change', updateTotalPrice);
+        });
     </script>
 }
 
