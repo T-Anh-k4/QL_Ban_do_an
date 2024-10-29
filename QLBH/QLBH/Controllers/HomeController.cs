@@ -58,7 +58,7 @@ namespace QLBH.Controllers
             if (product != null)
             {
                 var totalPrice = product.DonGiaBan.Value * quantity;
-                return Json(new { totalPrice = totalPrice.ToString("N4") + "đ"});
+                return Json(new { totalPrice = totalPrice.ToString("N0") + " đ"});
             }
 
             return Json(new { totalPrice = "0" });
@@ -109,6 +109,8 @@ namespace QLBH.Controllers
         [Route("GioHang")]
         public IActionResult GioHang()
         {
+            decimal tongTien = cart.Sum(x => x.SoLuong * x.dongia);
+            ViewBag.TongTien = tongTien;
             return View(cart);
         }
 
@@ -130,7 +132,6 @@ namespace QLBH.Controllers
                     TenHH = hanghoa.TenHh,
                     dongia = hanghoa.DonGiaBan ?? 0,
                     SoLuong = quantity
-
                 };
                 giohang.Add(item);
             }

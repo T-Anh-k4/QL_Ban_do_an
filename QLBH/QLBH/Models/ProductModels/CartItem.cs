@@ -7,6 +7,6 @@
         public decimal dongia {  get; set; }
         public int SoLuong {  get; set; }
         public decimal ThanhTien => SoLuong * dongia;
-
+        public decimal TongTien { get; set; }
     }
 }

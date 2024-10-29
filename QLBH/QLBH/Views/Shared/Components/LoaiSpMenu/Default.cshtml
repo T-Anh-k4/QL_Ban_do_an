@@ -39,7 +39,7 @@
 <nav class="header-bottom">
     <div class="container">
         <ul class="menu-list">
-            <li class="menu-list-item"><a asp-controller="Home" asp-action="Index" class="menu-link">Trang chủ</a></li>
+            <li class="menu-list-item"><a class="menu-link">Trang chủ</a></li>
             @foreach(var item in Model)
             {
                 var getUrl = "https://localhost:7196/api/productsapi/" + @item.MaLoai;

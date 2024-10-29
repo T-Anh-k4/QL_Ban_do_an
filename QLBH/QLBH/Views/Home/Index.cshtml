@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="product-price">
-                        <span class="current-price">@item.DonGiaBan</span>
+                            <span class="current-price">@item.DonGiaBan.Value.ToString("#,##0 đ")</span>
                     </div>
                     <div class="product-buy">
                             <button  class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>
@@ -49,7 +49,7 @@
                     <h2 class="product-title">@detail.monan.TenHh</h2>
                     <div class="product-control">
                         <div class="priceBox">
-                            <span class="current-price" id="unit-price">@String.Format("{0:N4}", detail.monan.DonGiaBan)</span> <!-- Đơn giá -->
+                        <span class="current-price" id="unit-price">@String.Format("{0:N0}", detail.monan.DonGiaBan) đ</span> <!-- Đơn giá -->
                         </div>
                         <div class="buttons_added">
                             <input class="minus is-form" type="button" value="-" id="decreaseButton">
@@ -68,7 +68,7 @@
                         <span class="thanhtien">Thành tiền</span>
                     <span class="price" id="total-price">
                         @(detail.monan.DonGiaBan != null
-                            ? String.Format("{0:N4}", detail.monan.DonGiaBan) + "đ"
+                            ? String.Format("{0:N0}", detail.monan.DonGiaBan) + "đ"
                             : "0.0000đ")
                     </span>
 
@@ -84,6 +84,7 @@
                 </div>
             </div>
         </div>
+
     @* them vao gio hang *@
 @section Scripts {
     <style>
@@ -125,47 +126,48 @@
             });
         });
     </script>
-} 
     <script>
-            $(document).ready(function () {
-                const productId = '@detail.monan.MaMonAn';
+        $(document).ready(function () {
+            const productId = '@detail.monan.MaMonAn';
 
-                function updateTotalPrice() {
-                    const quantity = parseInt($('#quantity').val());
+            function updateTotalPrice() {
+                const quantity = parseInt($('#quantity').val());
 
-                    $.ajax({
-                        url: '@Url.Action("GetTotalPrice", "Home")',
-                        type: 'GET',
-                        data: { productId: productId, quantity: quantity },
-                        success: function (data) {
-                            $('#total-price').text(data.totalPrice);
-                        },
-                        error: function () {
-                            console.log("Error occurred while updating total price.");
-                        }
-                    });
+                $.ajax({
+                    url: '@Url.Action("GetTotalPrice", "Home")',
+                    type: 'GET',
+                    data: { productId: productId, quantity: quantity },
+                    success: function (data) {
+                        $('#total-price').text(data.totalPrice);
+                    },
+                    error: function () {
+                        console.log("Error occurred while updating total price.");
+                    }
+                });
+            }
+
+            $('#decreaseButton').on('click', function () {
+                const quantityInput = $('#quantity');
+                if (quantityInput.val() > 1) {
+                    quantityInput.val(parseInt(quantityInput.val()) - 1);
+                    updateTotalPrice();
                 }
-
-                $('#decreaseButton').on('click', function () {
-                    const quantityInput = $('#quantity');
-                    if (quantityInput.val() > 1) {
-                        quantityInput.val(parseInt(quantityInput.val()) - 1);
-                        updateTotalPrice();
-                    }
-                });
-
-                $('#increaseButton').on('click', function () {
-                    const quantityInput = $('#quantity');
-                    if (quantityInput.val() < 100) {
-                        quantityInput.val(parseInt(quantityInput.val()) + 1);
-                        updateTotalPrice();
-                    }
-                });
-
-                $('#quantity').on('change', updateTotalPrice);
             });
-        </script>
+
+            $('#increaseButton').on('click', function () {
+                const quantityInput = $('#quantity');
+                if (quantityInput.val() < 100) {
+                    quantityInput.val(parseInt(quantityInput.val()) + 1);
+                    updateTotalPrice();
+                }
+            });
+
+            $('#quantity').on('change', updateTotalPrice);
+        });
+    </script>
+    } 
 }
+
 
 
 

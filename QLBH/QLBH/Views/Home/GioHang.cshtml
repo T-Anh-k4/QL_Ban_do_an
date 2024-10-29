@@ -8,7 +8,7 @@
     <div class="cart-container">
         <div class="cart-header">
             <h3 class="cart-header-title"><i class="fa-regular fa-basket-shopping-simple"></i> Giỏ hàng</h3>
-            <button class="cart-close" onclick="closeCart()"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+            <button class="cart-close exit" onclick="closeCart()"><i class="fa-sharp fa-solid fa-xmark"></i></button>
         </div>
         <div class="cart-body">
             @if (!Model.Any()) // Kiểm tra nếu giỏ hàng rỗng
@@ -35,27 +35,25 @@
                             </div>
                             <p class="product-note"><i class="fa-light fa-pencil"></i><span>Không có ghi chú</span></p>
                             <div class="cart-item-control">
-                                <a class="remove-cart" data-cart_id ="@item.Mahh">
-                                    <button class="cart-item-delete"  onclick="deleteCartItem(@item.Mahh, this)">Xóa</button>
+                                <a class="cart-item remove-cart" data-cart_id="@item.Mahh">
+                                    <button class="cart-item-delete" onclick="deleteCartItem(@item.Mahh, this)">Xóa</button>
                                 </a>
                                 <div class="buttons_added">
                                     <input class="minus is-form" type="button" value="-" id="decreaseButton">
                                     <input class="input-qty" id="quantity" max="100" min="1" type="number" value="@item.SoLuong" name="quantity">
-                                    <input class="plus is-form" type="button" value="+" id="increaseButton" >
+                                    <input class="plus is-form" type="button" value="+" id="increaseButton">
                                 </div>
                             </div>
                         </li>
                     }
                 </ul>
             }
-
-
         </div>
         <div class="cart-footer">
             <div class="cart-total-price">
                 <p class="text-tt">Tổng tiền:</p>
                 <p class="text-price">
-                    @String.Format("{0:C}", Model.Sum(x => x.dongia * x.SoLuong)) 
+                    @String.Format("{0:N0}", Model.Sum(x => x.dongia * x.SoLuong))
                     &nbsp;₫
                 </p>
             </div>
@@ -69,12 +67,28 @@
 
 @section Scripts {
     <script>
+        $(document).ready(function () {
+            $('.exit').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Index", "Home")",
+                    success: function (result) {
+                        if (result) {
+                            window.location.href = "@Url.Action("Index", "Home")";
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
         function updateQuantity(productId, quantity) {
             // Gửi yêu cầu cập nhật số lượng sản phẩm
             $.ajax({
                 url: '/Home/UpdateQuantity', // Đường dẫn đến Action trong Controller
                 type: 'POST',
-                data: { id: productId, quantity: quantity },
+                data: { productId: productId, quantity: quantity },
                 success: function (response) {
                     if (response.success) {
                         location.reload(); // Tải lại trang để cập nhật giỏ hàng
@@ -87,7 +101,7 @@
                 }
             });
         }
-    </script> 
+    </script>
     <script>
         $(document).ready(function () {
             $('.remove-cart').click(function () {
@@ -99,7 +113,7 @@
                     success: function (result) {
                         if (result) {
                             $('.cart-item[data-id="' + id + '"]').remove();
-                            location.reload(); 
+                            location.reload();
                         }
                     }
                 });
@@ -107,41 +121,52 @@
         });
     </script>
     <script>
-        $(document).ready(function () {
-            function updateTotalPrice() {
-                const quantity = parseInt($('#quantity').val());
-                var productId = $(this).data("cart_id");
-                $.ajax({
-                    url: '@Url.Action("GetTotalPrice", "Home")',
-                    type: 'GET',
-                    data: { productId: productId, quantity: quantity },
-                    success: function (data) {
-                        $('#total-price').text(data.totalPrice);
-                    },
-                    error: function () {
-                        console.log("Error occurred while updating total price.");
-                    }
-                });
+        function updateTotalPrice(productId) {
+            const quantity = parseInt($('#quantity').val());
+            $.ajax({
+                url: '@Url.Action("GetTotalPrice", "Home")',
+                type: 'GET',
+                data: { productId: productId, quantity: quantity },
+                success: function (data) {
+                    $('#total-price').text(data.totalPrice);
+                },
+                error: function () {
+                    console.log("Error occurred while updating total price.");
+                }
+            });
+        }
+
+        $('#decreaseButton').on('click', function () {
+            const quantityInput = $('#quantity');
+            const productId = $(this).closest('.cart-item').data('id'); // Lấy productId từ phần tử cha
+            if (quantityInput.val() > 1) {
+                quantityInput.val(parseInt(quantityInput.val()) - 1);
+                updateTotalPrice(productId); // Truyền productId
+                updateCartTotal(); // Cập nhật tổng cho giỏ hàng
+
             }
-
-            $('#decreaseButton').on('click', function () {
-                const quantityInput = $('#quantity');
-                if (quantityInput.val() > 1) {
-                    quantityInput.val(parseInt(quantityInput.val()) - 1);
-                    updateTotalPrice();
-                }
-            });
-
-            $('#increaseButton').on('click', function () {
-                const quantityInput = $('#quantity');
-                if (quantityInput.val() < 100) {
-                    quantityInput.val(parseInt(quantityInput.val()) + 1);
-                    updateTotalPrice();
-                }
-            });
-
-            $('#quantity').on('change', updateTotalPrice);
         });
+
+        $('#increaseButton').on('click', function () {
+            const quantityInput = $('#quantity');
+            const productId = $(this).closest('.cart-item').data('id'); // Lấy productId từ phần tử cha
+            if (quantityInput.val() < 100) {
+                quantityInput.val(parseInt(quantityInput.val()) + 1);
+                updateTotalPrice(productId); // Truyền productId
+                updateCartTotal(); // Cập nhật tổng cho giỏ hàng
+
+            }
+        });
+        function updateCartTotal() {
+            let total = 0;
+            $('.total-price').each(function () {
+                const priceText = $(this).text().replace(/[^0-9]/g, ''); // Lấy giá trị số từ chuỗi
+                total += parseInt(priceText) || 0; // Cộng dồn vào tổng
+            });
+            $('.text-price').text(total.toLocaleString('vi-VN') + ' ₫'); // Cập nhật tổng tiền
+        }
+
+
     </script>
 }
 
