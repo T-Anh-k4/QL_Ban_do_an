@@ -56,7 +56,7 @@ namespace QLBH.Controllers
             if (product != null)
             {
                 var totalPrice = product.DonGiaBan.Value * quantity;
-                return Json(new { totalPrice = totalPrice.ToString("N4") + "đ"});
+                return Json(new { totalPrice = totalPrice.ToString("N0") + " đ"});
             }
 
             return Json(new { totalPrice = "0" });
