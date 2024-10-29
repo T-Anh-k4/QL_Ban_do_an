@@ -44,9 +44,7 @@ namespace QLBH.Controllers
                     chitietmonan = chiTietmonAn
                 };
             }
-
-            // Tr? v? view kèm c? danh sách và chi ti?t (n?u có)
-            ViewBag.CurrentPage = page ?? 1; // Giá tr? trang hi?n t?i
+            ViewBag.CurrentPage = page ?? 1; 
             ViewBag.DetailProduct = homeProductDetailViewModel;
             return View(lst);
         }
@@ -62,6 +60,27 @@ namespace QLBH.Controllers
             }
 
             return Json(new { totalPrice = "0" });
+        }
+
+        public IActionResult ChiTietMonAn(int maMonAn)
+        {
+            var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+            var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+
+            if (monAn == null || chiTietmonAn == null)
+            {
+                return NotFound("Không tìm thấy món ăn này.");
+            }
+
+            var viewModel = new HomeProductDetailViewModel
+            {
+                monan = monAn,
+                chitietmonan = chiTietmonAn
+            };
+
+            ViewBag.MaMonAn = maMonAn; // Lưu mã món ăn vào ViewBag để sử dụng trong view
+
+            return View(viewModel);
         }
 
 
@@ -92,10 +111,6 @@ namespace QLBH.Controllers
         //    ViewBag.CurrentPage = page ?? 1; // Giá tr? trang hi?n t?i
         //    return View(homeProductDetailViewModel);
         //}
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

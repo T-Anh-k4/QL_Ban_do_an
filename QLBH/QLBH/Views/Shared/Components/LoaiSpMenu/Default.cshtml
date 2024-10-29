@@ -3,6 +3,7 @@
 *@
 @{
 }
+
 @model IEnumerable<Loaimonan>
 <!--search-->
 <div class="advanced-search">
@@ -50,18 +51,20 @@
     </div>
 </nav>
 <script>
+    var previousListUrl = '';
     function showProductsByCategory(getUrl) {
-        var str = '<div class="row">'; // Mở thẻ <div class="row"> để chứa các cột
+        sessionStorage.setItem('previousListUrl', getUrl); // Lưu URL của danh sách
+        var str = '<div class="home-products" id="home-products">'; 
         $.ajax({
             type: 'GET',
             url: getUrl,
             dataType: 'json',
             success: function (data) {
                 $.each(data, function (key, val) {
-                    str += '<div class="col-product col-md-4">'; // Sửa lỗi mở thẻ <div> ở đây
+                    str += '<div class="col-product">'; 
                     str += '    <article class="card-product">';
                     str += '        <div class="card-header">';
-                    str += '            <a class="card-image-link">';
+                    str += '            <a href="/Home/ChiTietMonAn?maMonAn=' + val.maMonAn + '" class="card-image-link">';
                     var basePath = '@Url.Content("~/assets/img/products/")';
                     str += '                <img class="card-image" src="' + basePath + val.anh.trim() + '" alt="' + val.tenHh + '">';
                     str += '            </a>';
@@ -94,4 +97,3 @@
         });
     }
 </script>
-
