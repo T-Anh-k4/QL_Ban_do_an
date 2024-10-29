@@ -2,27 +2,31 @@
     ViewData["Title"] = "ChiTietMonAn";
     Layout = "~/Views/Shared/_LayoutOgani.cshtml";
 }
-@addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model QLBH.ViewModels.HomeProductDetailViewModel
+
 <div class="modal product-detail open">
-    <button class="modal-close close-popup"><i class="fa-thin fa-xmark"></i></button>
+    <button class="modal-close">
+        <i class="fa-thin fa-xmark"></i>
+    </button>
+
     <div class="modal-container mdl-cnt" id="product-detail-content">
         <div class="modal-header">
-            <img class="product-image" src=@Url.Content( "~/assets/img/products/" + Model.monan.Anh) alt="">
+            <img class="product-image" src="@Url.Content("~/assets/img/products/" + Model.monan.Anh)" alt="">
         </div>
         <div class="modal-body">
             <h2 class="product-title">@Model.monan.TenHh</h2>
             <div class="product-control">
                 <div class="priceBox">
-                    <span class="current-price">@Model.monan.DonGiaBan</span>
+                    <span class="current-price" id="unit-price">@String.Format("{0:N4}", Model.monan.DonGiaBan)</span> 
                 </div>
                 <div class="buttons_added">
-                    <input class="minus is-form" type="button" value="-" onclick="decreasingNumber(this)">
-                    <input class="input-qty" max="100" min="1" name="" type="number" value=@Model.chitietmonan.SoLuong>
-                    <input class="plus is-form" type="button" value="+" onclick="increasingNumber(this)">
+                    <input class="minus is-form" type="button" value="-" id="decreaseButton">
+                    <input class="input-qty" id="quantity" max="100" min="1" type="number" value="1" name="quantity">
+                    <input class="plus is-form" type="button" value="+" id="increaseButton">
                 </div>
             </div>
-            <p class="product-description"></p> @* thêm vào csdl thuộc tính GioiThieu sau *@
+            <p class="product-description"></p>
         </div>
         <div class="notebox">
             <p class="notebox-title">Ghi chú</p>
@@ -31,14 +35,71 @@
         <div class="modal-footer">
             <div class="price-total">
                 <span class="thanhtien">Thành tiền</span>
-                <span class="price">@Model.monan.DonGiaBan</span>
+                <span class="price" id="total-price">
+                    @(Model.monan.DonGiaBan != null
+                        ? String.Format("{0:N4}", Model.monan.DonGiaBan) + "đ"
+                        : "0.0000đ")
+                </span>
             </div>
             <div class="modal-footer-control">
-                <a class="button-dathangngay" data-product="1">Đặt hàng ngay</a>
-                <button class="button-dat" id="add-cart" onclick="animationCart()"><i class="fa-light fa-basket-shopping"></i></button>
+                <button class="button-dathangngay" data-product="1" type="button">Đặt hàng ngay</button>
+                <button class="button-dat" id="add-cart" onclick="animationCart()">
+                    <i class="fa-light fa-basket-shopping"></i>
+                </button>
             </div>
         </div>
     </div>
 </div>
 
+<script>
+    // Hiển thị lại danh sách món ăn
+    $(document).ready(function () {
+        $('.modal-close').click(function () {
+            var previousListUrl = sessionStorage.getItem('previousListUrl');
+            if (previousListUrl) {
+                showProductsByCategory(previousListUrl); 
+            } else {
+                window.location.href = '@Url.Action("Index", "Home")'; 
+            }
+        });
+    });
 
+
+    $(document).ready(function () {
+        const productId = '@Model.monan.MaMonAn';
+
+        function updateTotalPrice() {
+            const quantity = parseInt($('#quantity').val());
+
+            $.ajax({
+                url: '@Url.Action("GetTotalPrice", "Home")',
+                type: 'GET',
+                data: { productId: productId, quantity: quantity },
+                success: function (data) {
+                    $('#total-price').text(data.totalPrice);
+                },
+                error: function () {
+                    console.log("Error occurred while updating total price.");
+                }
+            });
+        }
+
+        $('#decreaseButton').on('click', function () {
+            const quantityInput = $('#quantity');
+            if (quantityInput.val() > 1) {
+                quantityInput.val(parseInt(quantityInput.val()) - 1);
+                updateTotalPrice();
+            }
+        });
+
+        $('#increaseButton').on('click', function () {
+            const quantityInput = $('#quantity');
+            if (quantityInput.val() < 100) {
+                quantityInput.val(parseInt(quantityInput.val()) + 1);
+                updateTotalPrice();
+            }
+        });
+
+        $('#quantity').on('change', updateTotalPrice);
+    });
+</script>
