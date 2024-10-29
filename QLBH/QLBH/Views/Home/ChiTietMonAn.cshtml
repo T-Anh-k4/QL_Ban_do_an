@@ -37,7 +37,7 @@
                 <span class="thanhtien">Thành tiền</span>
                 <span class="price" id="total-price">
                     @(Model.monan.DonGiaBan != null
-                        ? String.Format("{0:N4}", Model.monan.DonGiaBan) + "đ"
+                        ? String.Format("{0:N0}", Model.monan.DonGiaBan) + "đ"
                         : "0.0000đ")
                 </span>
             </div>
