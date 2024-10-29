@@ -27,10 +27,12 @@ namespace QLBH.Controllers
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
             var lstsanpham = db.Monans.AsNoTracking().OrderBy(x => x.TenHh);
             PagedList<Monan> lst = new PagedList<Monan>(lstsanpham, pageNumber, pageSize);
+
             if (TempData["CurrentPage"] != null)
             {
                 page = (int)TempData["CurrentPage"];
             }
+            // L?y chi ti?t món ?n n?u có mã món ?n
             HomeProductDetailViewModel homeProductDetailViewModel = null;
             if (maMonAn.HasValue)
             {
@@ -42,7 +44,7 @@ namespace QLBH.Controllers
                     chitietmonan = chiTietmonAn
                 };
             }
-            ViewBag.CurrentPage = page ?? 1; // Giá tr? trang hi?n t?i
+            ViewBag.CurrentPage = page ?? 1; 
             ViewBag.DetailProduct = homeProductDetailViewModel;
             return View(lst);
         }
@@ -54,10 +56,31 @@ namespace QLBH.Controllers
             if (product != null)
             {
                 var totalPrice = product.DonGiaBan.Value * quantity;
-                return Json(new { totalPrice = totalPrice.ToString("N0") + " đ"});
+                return Json(new { totalPrice = totalPrice.ToString("N4") + "đ"});
             }
 
             return Json(new { totalPrice = "0" });
+        }
+
+        public IActionResult ChiTietMonAn(int maMonAn)
+        {
+            var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+            var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == maMonAn);
+
+            if (monAn == null || chiTietmonAn == null)
+            {
+                return NotFound("Không tìm thấy món ăn này.");
+            }
+
+            var viewModel = new HomeProductDetailViewModel
+            {
+                monan = monAn,
+                chitietmonan = chiTietmonAn
+            };
+
+            ViewBag.MaMonAn = maMonAn; // Lưu mã món ăn vào ViewBag để sử dụng trong view
+
+            return View(viewModel);
         }
 
 
@@ -70,10 +93,24 @@ namespace QLBH.Controllers
             ViewBag.maloai = maloai;
             return View(lst);
         }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult ChiTietMonAn(int? page,int? id)
+        //{
+        //    int pageSize = 8;
+        //    int pageNumber = page == null || page < 0 ? 1 : page.Value;
+        //    HomeProductDetailViewModel homeProductDetailViewModel = null;
+        //    if (id.HasValue)
+        //    {
+        //        var monAn = db.Monans.SingleOrDefault(x => x.MaMonAn == id.Value);
+        //        var chiTietmonAn = db.Chitietmonans.SingleOrDefault(x => x.MaMonAn == id.Value);
+        //        homeProductDetailViewModel = new HomeProductDetailViewModel
+        //        {
+        //            monan = monAn,
+        //            chitietmonan = chiTietmonAn
+        //        };
+        //    }
+        //    ViewBag.CurrentPage = page ?? 1; // Giá tr? trang hi?n t?i
+        //    return View(homeProductDetailViewModel);
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -87,8 +124,6 @@ namespace QLBH.Controllers
         [Route("GioHang")]
         public IActionResult GioHang()
         {
-            decimal tongTien = cart.Sum(x => x.SoLuong * x.dongia);
-            ViewBag.TongTien = tongTien;
             return View(cart);
         }
 
@@ -110,6 +145,7 @@ namespace QLBH.Controllers
                     TenHH = hanghoa.TenHh,
                     dongia = hanghoa.DonGiaBan ?? 0,
                     SoLuong = quantity
+
                 };
                 giohang.Add(item);
             }
