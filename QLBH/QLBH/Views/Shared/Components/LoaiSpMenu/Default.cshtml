@@ -1,0 +1,99 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Loaimonan>
+<!--search-->
+<div class="advanced-search">
+    <div class="container">
+        <div class="advanced-search-category">
+            <span>Phân loại </span>
+            <select name="" id="advanced-search-category-select" onchange="searchProducts()">
+                <option>Tất cả</option>
+                <option>Món chay</option>
+                <option>Món mặn</option>
+                <option>Món lẩu</option>
+                <option>Món ăn vặt</option>
+                <option>Món tráng miệng</option>
+                <option>Nước uống</option>
+            </select>
+        </div>
+        <div class="advanced-search-price">
+            <span>Giá từ</span>
+            <input type="number" placeholder="tối thiểu" id="min-price" onchange="searchProducts()">
+            <span>đến</span>
+            <input type="number" placeholder="tối đa" id="max-price" onchange="searchProducts()">
+            <button id="advanced-search-price-btn"><i class="fa-light fa-magnifying-glass-dollar"></i></button>
+        </div>
+        <div class="advanced-search-control">
+            <button id="sort-ascending" onclick="searchProducts(1)"><i class="fa-regular fa-arrow-up-short-wide"></i></button>
+            <button id="sort-descending" onclick="searchProducts(2)"><i class="fa-regular fa-arrow-down-wide-short"></i></button>
+            <button id="reset-search" onclick="searchProducts(0)"><i class="fa-light fa-arrow-rotate-right"></i></button>
+            <button onclick="closeSearchAdvanced()"><i class="fa-light fa-xmark"></i></button>
+        </div>
+    </div>
+</div>
+
+<!--Menu-->
+<nav class="header-bottom">
+    <div class="container">
+        <ul class="menu-list">
+            <li class="menu-list-item"><a asp-controller="Home" asp-action="Index" class="menu-link">Trang chủ</a></li>
+            @foreach(var item in Model)
+            {
+                var getUrl = "https://localhost:7196/api/productsapi/" + @item.MaLoai;
+                <li><a class="menu-link" style="cursor:pointer" onclick="showProductsByCategory('@getUrl')">@item.TenLoai</a></li>
+                @*<li class="menu-list-item"><a asp-controller="Home" asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai" class="menu-link">@item.TenLoai</a></li>*@
+            } 
+        </ul>
+    </div>
+</nav>
+<script>
+    var previousListUrl = '';
+    function showProductsByCategory(getUrl) {
+        sessionStorage.setItem('previousListUrl', getUrl); // Lưu URL của danh sách
+        var str = '<div class="home-products" id="home-products">'; 
+        $.ajax({
+            type: 'GET',
+            url: getUrl,
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (key, val) {
+                    str += '<div class="col-product">'; 
+                    str += '    <article class="card-product">';
+                    str += '        <div class="card-header">';
+                    str += '            <a href="/Home/ChiTietMonAn?maMonAn=' + val.maMonAn + '" class="card-image-link">';
+                    var basePath = '@Url.Content("~/assets/img/products/")';
+                    str += '                <img class="card-image" src="' + basePath + val.anh.trim() + '" alt="' + val.tenHh + '">';
+                    str += '            </a>';
+                    str += '        </div>';
+                    str += '        <div class="food-info">';
+                    str += '            <div class="card-content">';
+                    str += '                <div class="card-title">';
+                    str += '                    <a class="card-title-link">' + val.tenHh + '</a>';
+                    str += '                </div>';
+                    str += '            </div>';
+                    str += '            <div class="card-footer">';
+                    str += '                <div class="product-price">';
+                    str += '                    <span class="current-price">' + parseFloat(val.donGiaBan).toFixed(4) + ' đ</span>'; 
+
+                    str += '                </div>';
+                    str += '                <div class="product-buy">';
+                    str += '                    <button class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>';
+                    str += '                </div>';
+                    str += '            </div>';
+                    str += '        </div>';
+                    str += '    </article>';
+                    str += '</div>'; 
+                });
+                str += '</div>'; 
+                $('#displayProducts').html(str); 
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>

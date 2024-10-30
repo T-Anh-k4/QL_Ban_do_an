@@ -1,0 +1,133 @@
+﻿@using QLBH.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Monan>
+@{
+    ViewData["Title"] = "DanhMucSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
+<h2>Danh Mục Các Sản Phẩm</h2>
+
+<p>
+    <a class="btn btn-sm btn-primary" asp-action="ThemSanPhamMoi">Create New</a>
+</p>
+<p>@TempData["Message"]</p>
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">List Products</h6>
+            <a href="">Show All</a>
+        </div>
+        <div class="table text-start align-middle table-bordered table-hover mb-0">
+<table class="table">
+    <thead>
+        <tr class="text-white">
+            <th>
+                Mã món ăn
+            </th>
+            <th>
+                Mã loại
+            </th>
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Đơn giá bán
+            </th>
+            <th>
+                Ảnh
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.MaLoaiNavigation)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaMonAn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaLoai)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGiaBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anh)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.MaLoaiNavigation.MaLoai)
+            </td> *@
+            <td>
+                <a class="btn btn-sm btn-primary" asp-action="SuaSanPham" asp-route-maSanPham="@item.MaMonAn">Edit</a> 
+              @*<a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaMonAn">Details</a> | *@
+                <a class="btn btn-sm btn-primary" asp-action="XoaSanPham" asp-route-masanpham="@item.MaMonAn">Delete</a>
+           </td>
+        </tr>
+}
+    </tbody>
+</table>
+        </div>
+</div>
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("DanhMucSanPham", new { page = page }), new PagedListRenderOptions
+ {
+     ContainerDivClasses = new[] { "page-nav" }, // Thêm class cho div bao quanh
+     UlElementClasses = new[] { "page-nav-list" }, // Thêm class cho ul
+     LiElementClasses = new[] { "page-nav-item" }, // Thêm class cho li
+ })
+
+@*  css cho phân trang *@
+@section Styles {
+    <style>
+        /* Page Nav */
+        .page-nav, .page-nav-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 10px;
+            margin-top: 10px;
+            list-style: none;
+        }
+
+        .page-nav-item a {
+            display: inline-block;
+            border: 2px solid #000;
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            line-height: 27px;
+            border-radius: 0;
+            font-size: 15px;
+            background-color: white;
+         
+        }
+
+            .page-nav-item.active a, .page-nav-item a:hover {
+                color: white;
+                background-color: red;
+            }
+
+            .btn-primary {
+            background-color: red;
+            border-color: red;
+            padding: 0.5rem 1rem; 
+            font-size: 1rem; 
+            border-radius: 0.5rem; 
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; 
+            border-color: #0056b3; 
+        }
+    </style>
+}
+
+           
