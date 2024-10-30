@@ -12,11 +12,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vy Food</title>
-    <link href='./assets/img/favicon.png' rel='icon' type='image/x-icon' />
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/home-responsive.css">
-    <link rel="stylesheet" href="../assets/css/toast-message.css">
-    <link rel="stylesheet" href="../assets/font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
+    <link href='~/assets/img/favicon.png' rel='icon' type='image/x-icon' />
+    <link rel="stylesheet" href="~/assets/css/main.css">
+    <link rel="stylesheet" href="~/assets/css/home-responsive.css">
+    <link rel="stylesheet" href="~/assets/css/toast-message.css">
+    <link rel="stylesheet" href="~/assets/font/font-awesome-pro-v6-6.2.0/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 </head>
 <body>
     <header>
@@ -56,10 +60,11 @@
                 </div>
                 <div class="header-middle-right">
                     <ul class="header-middle-right-list">
-                        <li class="header-middle-right-item dnone open" onclick="openSearchMb()">
-                            <div class="cart-icon-menu">
-                                <i class="fa-light fa-magnifying-glass"></i>
-                            </div>
+                        <li class="header-middle-right-item dnone open" onclick="openSearchMb()">   
+                             <div class="cart-icon-menu">
+                               <i class="fa-light fa-magnifying-glass"></i> 
+                            </div> 
+                           
                         </li>
                         <li class="header-middle-right-item close" onclick="closeSearchMb()">
                             <div class="cart-icon-menu">
@@ -69,21 +74,32 @@
                         <li class="header-middle-right-item dropdown open">
                             <i class="fa-light fa-user"></i>
                             <div class="auth-container">
-                                <span class="text-dndk">Đăng nhập / Đăng ký</span>
-                                <span class="text-tk">Tài khoản <i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                            @*     <span class="text-dndk">Đăng nhập / Đăng ký</span>
+                                <span class="text-tk">Tài khoản <i class="fa-sharp fa-solid fa-caret-down"></i></span> *@
+                                <a asp-controller="Access" asp-action="Logout" class="text-tk">Logout</a>
                             </div>
-                            <ul class="header-middle-right-menu">
+                     @*        <ul class="header-middle-right-menu">
                                 <li><a id="login" href="javascript:;"><i class="fa-light fa-right-to-bracket"></i> Đăng nhập</a></li>
                                 <li><a id="signup" href="javascript:;"><i class="fa-light fa-user-plus"></i> Đăng ký</a></li>
-                            </ul>
+                            </ul> *@
                         </li>
                         <li class="header-middle-right-item open" onclick="openCart()">
                             <div class="cart-icon-menu">
-                                <i class="fa-light fa-basket-shopping"></i>
+                                <a asp-controller="Home" asp-action="GioHang"><i class="fa-light fa-basket-shopping"></i></a>
                                 <span class="count-product-cart">0</span>
                             </div>
                             <span>Giỏ hàng</span>
                         </li>
+                        <!-- Nút Quản lý mới -->
+                        <!-- Nút Quản lý mới -->
+                        @if (Context.Session.GetString("Loai") == "Admin")
+                        {
+                            <li class="header-middle-right-item">
+                                <a asp-controller="Admin" asp-action="Index" class="header-manage-link">
+                                    <button class="form-ground-btn">Quản lý</button>
+                                </a>
+                            </li>
+                        }                       
                     </ul>
                 </div>
             </div>
@@ -95,9 +111,9 @@
     <!-- main centre-->
     <section>
         <main class="main-wrapper">
-            <div class="container" id="trangchu">
+            <div class="container">
                 <div class="home-slider">
-                    <img src="./assets/img/banner-1.png" alt="">
+                    <img src="~/assets/img/banner-1.png" alt="">
                     <!-- <img src="./assets/img/banner-2.png" alt="">
                     <img src="./assets/img/banner-3.png" alt="">
                     <img src="./assets/img/banner-4.png" alt="">
@@ -145,7 +161,10 @@
                     <h2 class="home-title">Khám phá thực đơn của chúng tôi</h2>
                 </div>
 
-                @RenderBody()
+                <div id="displayProducts">@RenderBody()
+                    @RenderSection("Scripts", required: false)
+                </div>
+                
                 <!--<partial name="MainLayout" />-->
             </div>
         </main>
@@ -464,9 +483,9 @@
         </main>
     </div>
     <div id="toast"></div>
-    <script src="../js/initialization.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/checkout.js"></script>
-    <script src="../js/toast-message.js"></script>
+    <script src="~/js/initialization.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/checkout.js"></script>
+    <script src="~/js/toast-message.js"></script>
 </body>
 </html>

@@ -2,13 +2,16 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QLBH.Models;
+using QLBH.Models.Authentication;
 using X.PagedList;
+using QLBH.Models.Dashboard;
 
 namespace QLBH.Areas.Admin.Controllers
 {
     [Area("admin")]
     [Route("admin")]
     [Route("admin/homeadmin")]
+    [Authentication("Admin")]
     public class HomeAdminController : Controller
     {
         private readonly QlbandoanContext db;
@@ -16,6 +19,24 @@ namespace QLBH.Areas.Admin.Controllers
         public HomeAdminController(QlbandoanContext context)
         {
             db = context;
+        }
+
+        [Route("")]
+        [Route("Index")]
+        public IActionResult Index()
+        {
+            var userCount = db.Nguoidungs.Count();
+            var productCount = db.Monans.Count();
+            var orderCount = db.Hoadonbans.Count();
+
+            var model = new AdminDashboardViewModel
+            {
+                UserCount = userCount,
+                ProductCount = productCount,
+                OrderCount = orderCount
+            };
+
+            return View(model); // Truyền model vào Vie
         }
 
         [Route("")]

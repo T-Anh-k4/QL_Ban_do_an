@@ -30,6 +30,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERhbmhNdWNTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/LoaiSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXExvYWlTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,16 +58,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Access/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Access/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXFJlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/ChiTietMonAn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGlUaWV0TW9uQW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/GioHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHaW9IYW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/SanPhamTheoLoai.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTYW5QaGFtVGhlb0xvYWkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/ThanhToan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUaGFuaFRvYW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/Components/LoaiSpMenu/Default.cshtml]
@@ -72,6 +92,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/PartialMonAn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxNb25Bbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/_LayoutOgani.cshtml]

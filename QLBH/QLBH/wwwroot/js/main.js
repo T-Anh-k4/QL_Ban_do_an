@@ -114,9 +114,9 @@ function detailProduct(index) {
 
 function animationCart() {
     document.querySelector(".count-product-cart").style.animation = "slidein ease 1s"
-    setTimeout(()=>{
+    setTimeout(() => {
         document.querySelector(".count-product-cart").style.animation = "none"
-    },1000)
+    }, 1000)
 }
 
 // Them SP vao gio hang
@@ -211,9 +211,9 @@ function deleteCartItem(id, el) {
 }
 
 //Update cart total
-function updateCartTotal() {
-    document.querySelector('.text-price').innerText = vnd(getCartTotal());
-}
+//function updateCartTotal() {
+//    document.querySelector('.text-price').innerText = vnd(getCartTotal());
+//}
 
 // Lay tong tien don hang
 function getCartTotal() {
@@ -293,13 +293,13 @@ function closeCart() {
 }
 
 // Open Search Advanced
-document.querySelector(".filter-btn").addEventListener("click",(e) => {
+document.querySelector(".filter-btn").addEventListener("click", (e) => {
     e.preventDefault();
     document.querySelector(".advanced-search").classList.toggle("open");
     document.getElementById("home-service").scrollIntoView();
 })
 
-document.querySelector(".form-search-input").addEventListener("click",(e) => {
+document.querySelector(".form-search-input").addEventListener("click", (e) => {
     e.preventDefault();
     document.getElementById("home-service").scrollIntoView();
 })
@@ -314,7 +314,7 @@ function openSearchMb() {
     document.querySelector(".header-middle-center").style.display = "block";
     document.querySelector(".header-middle-right-item.close").style.display = "block";
     let liItem = document.querySelectorAll(".header-middle-right-item.open");
-    for(let i = 0; i < liItem.length; i++) {
+    for (let i = 0; i < liItem.length; i++) {
         liItem[i].style.setProperty("display", "none", "important")
     }
 }
@@ -325,7 +325,7 @@ function closeSearchMb() {
     document.querySelector(".header-middle-center").style.display = "none";
     document.querySelector(".header-middle-right-item.close").style.display = "none";
     let liItem = document.querySelectorAll(".header-middle-right-item.open");
-    for(let i = 0; i < liItem.length; i++) {
+    for (let i = 0; i < liItem.length; i++) {
         liItem[i].style.setProperty("display", "block", "important")
     }
 }
@@ -477,7 +477,7 @@ loginButton.addEventListener('click', () => {
         if (vitri == -1) {
             toast({ title: 'Error', message: 'Tài khoản của bạn không tồn tại', type: 'error', duration: 3000 });
         } else if (accounts[vitri].password == passlog) {
-            if(accounts[vitri].status == 0) {
+            if (accounts[vitri].status == 0) {
                 toast({ title: 'Warning', message: 'Tài khoản của bạn đã bị khóa', type: 'warning', duration: 3000 });
             } else {
                 localStorage.setItem('currentuser', JSON.stringify(accounts[vitri]));
@@ -503,7 +503,7 @@ function kiemtradangnhap() {
         document.querySelector('.header-middle-right-menu').innerHTML = `<li><a href="javascript:;" onclick="myAccount()"><i class="fa-light fa-circle-user"></i> Tài khoản của tôi</a></li>
             <li><a href="javascript:;" onclick="orderHistory()"><i class="fa-regular fa-bags-shopping"></i> Đơn hàng đã mua</a></li>
             <li class="border"><a id="logout" href="javascript:;"><i class="fa-light fa-right-from-bracket"></i> Thoát tài khoản</a></li>`
-        document.querySelector('#logout').addEventListener('click',logOut)
+        document.querySelector('#logout').addEventListener('click', logOut)
     }
 }
 
@@ -522,11 +522,11 @@ function logOut() {
 
 function checkAdmin() {
     let user = JSON.parse(localStorage.getItem('currentuser'));
-    if(user && user.userType == 1) {
+    if (user && user.userType == 1) {
         let node = document.createElement(`li`);
         node.innerHTML = `<a href="./admin.html"><i class="fa-light fa-gear"></i> Quản lý cửa hàng</a>`
         document.querySelector('.header-middle-right-menu').prepend(node);
-    } 
+    }
 }
 
 window.onload = kiemtradangnhap();
@@ -734,7 +734,7 @@ function getOrderDetails(madon) {
     let orderDetails = localStorage.getItem("orderDetails") ? JSON.parse(localStorage.getItem("orderDetails")) : [];
     let ctDon = [];
     orderDetails.forEach(item => {
-        if(item.madon == madon) {
+        if (item.madon == madon) {
             ctDon.push(item);
         }
     });
@@ -814,7 +814,7 @@ const headerNav = document.querySelector(".header-bottom");
 let lastScrollY = window.scrollY;
 
 window.addEventListener("scroll", () => {
-    if(lastScrollY < window.scrollY) {
+    if (lastScrollY < window.scrollY) {
         headerNav.classList.add("hide")
     } else {
         headerNav.classList.remove("hide")
@@ -825,7 +825,7 @@ window.addEventListener("scroll", () => {
 // Page
 function renderProducts(showProduct) {
     let productHtml = '';
-    if(showProduct.length == 0) {
+    if (showProduct.length == 0) {
         document.getElementById("home-title").style.display = "none";
         productHtml = `<div class="no-result"><div class="no-result-h">Tìm kiếm không có kết quả</div><div class="no-result-p">Xin lỗi, chúng tôi không thể tìm được kết quả hợp với tìm kiếm của bạn</div><div class="no-result-i"><i class="fa-light fa-face-sad-cry"></i></div></div>`;
     } else {
@@ -867,7 +867,7 @@ function searchProducts(mode) {
     let valueCategory = document.getElementById("advanced-search-category-select").value;
     let minPrice = document.getElementById("min-price").value;
     let maxPrice = document.getElementById("max-price").value;
-    if(parseInt(minPrice) > parseInt(maxPrice) && minPrice != "" && maxPrice != "") {
+    if (parseInt(minPrice) > parseInt(maxPrice) && minPrice != "" && maxPrice != "") {
         alert("Giá đã nhập sai !");
     }
 
@@ -879,16 +879,16 @@ function searchProducts(mode) {
         return item.title.toString().toUpperCase().includes(valeSearchInput.toString().toUpperCase());
     })
 
-    if(minPrice == "" && maxPrice != "") {
+    if (minPrice == "" && maxPrice != "") {
         result = result.filter((item) => item.price <= maxPrice);
     } else if (minPrice != "" && maxPrice == "") {
         result = result.filter((item) => item.price >= minPrice);
-    } else if(minPrice != "" && maxPrice != "") {
+    } else if (minPrice != "" && maxPrice != "") {
         result = result.filter((item) => item.price <= maxPrice && item.price >= minPrice);
     }
 
     document.getElementById("home-service").scrollIntoView();
-    switch (mode){
+    switch (mode) {
         case 0:
             result = JSON.parse(localStorage.getItem('products'));;
             document.querySelector('.form-search-input').value = "";
@@ -897,10 +897,10 @@ function searchProducts(mode) {
             document.getElementById("max-price").value = "";
             break;
         case 1:
-            result.sort((a,b) => a.price - b.price)
+            result.sort((a, b) => a.price - b.price)
             break;
         case 2:
-            result.sort((a,b) => b.price - a.price)
+            result.sort((a, b) => b.price - a.price)
             break;
     }
     showHomeProduct(result)
@@ -967,5 +967,3 @@ function showCategory(category) {
     setupPagination(productSearch, perPage, currentPageSeach);
     document.getElementById("home-title").scrollIntoView();
 }
-
-

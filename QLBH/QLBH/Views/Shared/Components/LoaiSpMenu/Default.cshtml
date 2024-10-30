@@ -3,6 +3,7 @@
 *@
 @{
 }
+
 @model IEnumerable<Loaimonan>
 <!--search-->
 <div class="advanced-search">
@@ -39,13 +40,60 @@
 <nav class="header-bottom">
     <div class="container">
         <ul class="menu-list">
-            <li class="menu-list-item"><a href="" class="menu-link">Trang chủ</a></li>
+            <li class="menu-list-item"><a asp-controller="Home" asp-action="Index" class="menu-link">Trang chủ</a></li>
             @foreach(var item in Model)
             {
-                <li class="menu-list-item"><a asp-controller="Home" asp-action ="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai" class="menu-link">@item.TenLoai</a></li>
-
-            }
+                var getUrl = "https://localhost:7196/api/productsapi/" + @item.MaLoai;
+                <li><a class="menu-link" style="cursor:pointer" onclick="showProductsByCategory('@getUrl')">@item.TenLoai</a></li>
+                @*<li class="menu-list-item"><a asp-controller="Home" asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai" class="menu-link">@item.TenLoai</a></li>*@
+            } 
         </ul>
     </div>
 </nav>
+<script>
+    var previousListUrl = '';
+    function showProductsByCategory(getUrl) {
+        sessionStorage.setItem('previousListUrl', getUrl); // Lưu URL của danh sách
+        var str = '<div class="home-products" id="home-products">'; 
+        $.ajax({
+            type: 'GET',
+            url: getUrl,
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (key, val) {
+                    str += '<div class="col-product">'; 
+                    str += '    <article class="card-product">';
+                    str += '        <div class="card-header">';
+                    str += '            <a href="/Home/ChiTietMonAn?maMonAn=' + val.maMonAn + '" class="card-image-link">';
+                    var basePath = '@Url.Content("~/assets/img/products/")';
+                    str += '                <img class="card-image" src="' + basePath + val.anh.trim() + '" alt="' + val.tenHh + '">';
+                    str += '            </a>';
+                    str += '        </div>';
+                    str += '        <div class="food-info">';
+                    str += '            <div class="card-content">';
+                    str += '                <div class="card-title">';
+                    str += '                    <a class="card-title-link">' + val.tenHh + '</a>';
+                    str += '                </div>';
+                    str += '            </div>';
+                    str += '            <div class="card-footer">';
+                    str += '                <div class="product-price">';
+                    str += '                    <span class="current-price">' + parseFloat(val.donGiaBan).toFixed(4) + ' đ</span>'; 
 
+                    str += '                </div>';
+                    str += '                <div class="product-buy">';
+                    str += '                    <button class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>';
+                    str += '                </div>';
+                    str += '            </div>';
+                    str += '        </div>';
+                    str += '    </article>';
+                    str += '</div>'; 
+                });
+                str += '</div>'; 
+                $('#displayProducts').html(str); 
+            },
+            error: function (xhr) {
+                alert(xhr.responseText);
+            }
+        });
+    }
+</script>

@@ -3,6 +3,13 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|c:\\users\\lenovo\\documents\\asp.net_laptrinhweb\\ql_ban_do_an\\qlbh\\qlbh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|solutionrelative:qlbh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\AppData\\Local\\SourceServer\\e61771f08eb01415e94c4abfa6b3bd6f9f0a5771492da05b7eec125cfe59cd46\\QLBH\\QLBH\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|c:\\users\\lenovo\\documents\\asp.net_laptrinhweb\\ql_ban_do_an\\qlbh\\qlbh\\models\\qlbandoancontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|solutionrelative:qlbh\\models\\qlbandoancontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -45,10 +52,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|c:\\users\\lenovo\\documents\\asp.net_laptrinhweb\\ql_ban_do_an\\qlbh\\qlbh\\areas\\admin\\controllers\\homeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|solutionrelative:qlbh\\areas\\admin\\controllers\\homeadmincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|c:\\users\\lenovo\\documents\\asp.net_laptrinhweb\\ql_ban_do_an\\qlbh\\qlbh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19A1B744-659B-44E9-9978-73D1CBA052AE}|QLBH\\QLBH.csproj|solutionrelative:qlbh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +61,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -69,21 +72,38 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\AppData\\Local\\SourceServer\\e61771f08eb01415e94c4abfa6b3bd6f9f0a5771492da05b7eec125cfe59cd46\\QLBH\\QLBH\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\e61771f08eb01415e94c4abfa6b3bd6f9f0a5771492da05b7eec125cfe59cd46\\QLBH\\QLBH\\Program.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\AppData\\Local\\SourceServer\\e61771f08eb01415e94c4abfa6b3bd6f9f0a5771492da05b7eec125cfe59cd46\\QLBH\\QLBH\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\e61771f08eb01415e94c4abfa6b3bd6f9f0a5771492da05b7eec125cfe59cd46\\QLBH\\QLBH\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T15:23:38.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "QlbandoanContext.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Models\\QlbandoanContext.cs",
               "RelativeDocumentMoniker": "QLBH\\Models\\QlbandoanContext.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Models\\QlbandoanContext.cs*",
-              "RelativeToolTip": "QLBH\\Models\\QlbandoanContext.cs*",
-              "ViewState": "AgIAABUAAAAAAAAAAAA7wCkAAAAsAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Models\\QlbandoanContext.cs",
+              "RelativeToolTip": "QLBH\\Models\\QlbandoanContext.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAywCkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-30T09:00:47.367Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Chitiethoadon.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Models\\Chitiethoadon.cs",
               "RelativeDocumentMoniker": "QLBH\\Models\\Chitiethoadon.cs",
@@ -91,12 +111,11 @@
               "RelativeToolTip": "QLBH\\Models\\Chitiethoadon.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T09:00:45.657Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T09:00:45.657Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "LoaiSpMenuViewComponents.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\ViewComponents\\LoaiSpMenuViewComponents.cs",
               "RelativeDocumentMoniker": "QLBH\\ViewComponents\\LoaiSpMenuViewComponents.cs",
@@ -104,12 +123,11 @@
               "RelativeToolTip": "QLBH\\ViewComponents\\LoaiSpMenuViewComponents.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T09:00:39.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T09:00:39.905Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "LoaiSanPham.cshtml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\HomeAdmin\\LoaiSanPham.cshtml",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\LoaiSanPham.cshtml",
@@ -117,12 +135,11 @@
               "RelativeToolTip": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\LoaiSanPham.cshtml",
               "ViewState": "AgIAACQAAAAAAAAAAAAAAC4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-22T10:46:48.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T10:46:48.057Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "DanhMucSanPham.cshtml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\HomeAdmin\\DanhMucSanPham.cshtml",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\DanhMucSanPham.cshtml",
@@ -134,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ThemLoaiSanPhamMoi.cshtml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\HomeAdmin\\ThemLoaiSanPhamMoi.cshtml",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\ThemLoaiSanPhamMoi.cshtml",
@@ -146,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "SuaLoaiSanPham.cshtml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\HomeAdmin\\SuaLoaiSanPham.cshtml",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\SuaLoaiSanPham.cshtml",
@@ -158,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "ThemSanPhamMoi.cshtml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\HomeAdmin\\ThemSanPhamMoi.cshtml",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\ThemSanPhamMoi.cshtml",
@@ -170,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "QLBH\\Controllers\\HomeController.cs",
@@ -178,12 +195,11 @@
               "RelativeToolTip": "QLBH\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T04:22:01.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T04:22:01.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "HomeAdminController.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Controllers\\HomeAdminController.cs",
@@ -195,19 +211,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Program.cs",
               "RelativeDocumentMoniker": "QLBH\\Program.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Program.cs",
               "RelativeToolTip": "QLBH\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:31:04.592Z"
+              "WhenOpened": "2024-10-20T15:31:04.592Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "SuaSanPham.cshtml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\ASP.NET_LapTrinhWeb\\QL_Ban_do_an\\QLBH\\QLBH\\Areas\\Admin\\Views\\HomeAdmin\\SuaSanPham.cshtml",
               "RelativeDocumentMoniker": "QLBH\\Areas\\Admin\\Views\\HomeAdmin\\SuaSanPham.cshtml",

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "PartialMonAn";
+    Layout = "~/Views/Shared/_LayoutOgani.cshtml";
+}
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Monan>
+
+    @foreach (var item in Model)
+    {
+        <div class="col-product">
+            <article class="card-product">
+                <div class="card-header">
+                    <a asp-controller="Home" asp-action="Index" asp-route-maMonAn="@item.MaMonAn" asp-route-page="@ViewBag.CurrentPage" class="card-image-link">
+                        <img class="card-image" src="@Url.Content("~/assets/img/products/" + item.Anh)" alt="Nấm đùi gà xào cháy tỏi">
+                    </a>
+                </div>
+                <div class="food-info">
+                    <div class="card-content">
+                        <div class="card-title">
+                            <a asp-controller="Home" asp-action="Index" asp-route-maMonAn="@item.MaMonAn" asp-route-page="@ViewBag.CurrentPage" class="card-title-link">@item.TenHh</a>@* class="card-title-link" onclick="detailProduct(1)" *@
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="product-price">
+                            <span class="current-price">@item.DonGiaBan</span>
+                        </div>
+                        <div class="product-buy">
+                            <button class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    }
+
+
+
+
+
