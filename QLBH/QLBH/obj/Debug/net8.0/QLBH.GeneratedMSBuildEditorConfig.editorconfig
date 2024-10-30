@@ -17,79 +17,79 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QLBH
 build_property.RootNamespace = QLBH
-build_property.ProjectDir = D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH\
+build_property.ProjectDir = C:\Users\Lenovo\Documents\ASP.NET_LapTrinhWeb\QL_Ban_do_an\QLBH\QLBH\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Thiết kế web\LẬP TRÌNH WEB\QL_Ban_do_an\QLBH\QLBH
+build_property.MSBuildProjectDirectory = C:\Users\Lenovo\Documents\ASP.NET_LapTrinhWeb\QL_Ban_do_an\QLBH\QLBH
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/DanhMucSanPham.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/DanhMucSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERhbmhNdWNTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/LoaiSanPham.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/LoaiSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXExvYWlTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaLoaiSanPham.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaLoaiSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN1YUxvYWlTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaSanPham.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN1YVNhblBoYW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/ThemLoaiSanPhamMoi.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/ThemLoaiSanPhamMoi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFRoZW1Mb2FpU2FuUGhhbU1vaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/ThemSanPhamMoi.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/ThemSanPhamMoi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFRoZW1TYW5QaGFtTW9pLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Home/Index.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Home/Privacy.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Home/SanPhamTheoLoai.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Home/SanPhamTheoLoai.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTYW5QaGFtVGhlb0xvYWkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Shared/Components/LoaiSpMenu/Default.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/Components/LoaiSpMenu/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTG9haVNwTWVudVxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Shared/Error.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Shared/_LayoutOgani.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/_LayoutOgani.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRPZ2FuaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/_ViewImports.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/_ViewStart.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Views/Shared/_Layout.cshtml]
+[C:/Users/Lenovo/Documents/ASP.NET_LapTrinhWeb/QL_Ban_do_an/QLBH/QLBH/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-j22qalkiqv
