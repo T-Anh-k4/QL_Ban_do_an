@@ -6,7 +6,7 @@
 @model QLBH.ViewModels.HomeProductDetailViewModel
 
 <div class="modal product-detail open">
-    <button class="modal-close">
+    <button class="modal-close close-popup">
         <i class="fa-thin fa-xmark"></i>
     </button>
 
@@ -18,7 +18,7 @@
             <h2 class="product-title">@Model.monan.TenHh</h2>
             <div class="product-control">
                 <div class="priceBox">
-                    <span class="current-price" id="unit-price">@String.Format("{0:N3}", Model.monan.DonGiaBan)</span>
+                    <span class="current-price" id="unit-price">@String.Format("{0:N0}", Model.monan.DonGiaBan)</span>
                 </div>
                 <div class="buttons_added">
                     <input class="minus is-form" type="button" value="-" id="decreaseButton">
@@ -37,7 +37,7 @@
                 <span class="thanhtien">Thành tiền</span>
                 <span class="price" id="total-price">
                     @(Model.monan.DonGiaBan != null
-                        ? String.Format("{0:N3}", Model.monan.DonGiaBan) + "đ"
+                        ? String.Format("{0:N0}", Model.monan.DonGiaBan) + "đ"
                         : "0.0000đ")
                 </span>
             </div>
@@ -116,33 +116,34 @@
         $(document).ready(function () {
             $('.add-to-cart').click(function () {
                 var id = $(this).data("product_id");
-                var quantity = $('#quantity').val(); // Lấy số lượng từ input
-
+                var quantity = $('#quantity').val(); 
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("ThemGioHang", "Home")",
                     data: { Id: id, quantity: quantity },
                     success: function (result) {
                         if (result) {
-                            Swal.fire({
-                                title: "Thêm giỏ hàng thành công!",
-                                icon: "success",
-                                customClass: {
-                                    popup: 'small-swal-popup'  // Sử dụng class tùy chỉnh cho popup
-                                },
-                                confirmButtonText: "OK"
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    $('.modal-close.close-popup').click(); // Đóng modal khi thêm thành công
-                                    // window.location.href = "@Url.Action("GioHang", "Home")";
-                                }
-                            });
+                            updateCartCount();
+                            $('.modal-close.close-popup').click();
+                            // Swal.fire({
+                            //     title: "Thêm giỏ hàng thành công!",
+                            //     icon: "success",
+                            //     customClass: {
+                            //         popup: 'small-swal-popup'  // Sử dụng class tùy chỉnh cho popup
+                            //     },
+                            //     confirmButtonText: "OK"
+                            // }).then((result) => {
+                            //     if (result.isConfirmed) {
+                            //         $('.modal-close.close-popup').click(); // Đóng modal khi thêm thành công
+                            //          // window.location.href = "@Url.Action("GioHang", "Home")";
+                            //     }
+                            // });
                         }
                     }
                 });
             });
         });
-    </script>
+    </script>@* them gio hang *@
     <script>
         $(document).ready(function () {
             const productId = '@Model.monan.MaMonAn';
@@ -163,6 +164,21 @@
             }
 
             $('#quantity').on('change', updateTotalPrice);
+        });
+    </script>
+    <script>
+        function updateCartCount() {
+            $.ajax({
+                url: '@Url.Action("GetCartCount", "Home")',
+                method: 'GET',
+                success: function (data) {
+                    $('#cart-count').text(data.count);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            updateCartCount();
         });
     </script>
 }

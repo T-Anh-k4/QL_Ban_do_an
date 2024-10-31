@@ -86,9 +86,13 @@
                         <li class="header-middle-right-item open" onclick="openCart()">
                             <div class="cart-icon-menu">
                                 <a asp-controller="Home" asp-action="GioHang"><i class="fa-light fa-basket-shopping"></i></a>
-                                <span class="count-product-cart">0</span>
+                                <span class="count-product-cart" id="cart-count">
+                                    @Context.Session.GetInt32("CartCount") ?? 0
+                                </span>
                             </div>
-                            <span>Giỏ hàng</span>
+                            <a asp-controller="Home" asp-action="GioHang">
+                                <span>Giỏ hàng</span>
+                            </a>
                         </li>
                         <!-- Nút Quản lý mới -->
                         <!-- Nút Quản lý mới -->
@@ -487,5 +491,20 @@
     <script src="~/js/main.js"></script>
     <script src="~/js/checkout.js"></script>
     <script src="~/js/toast-message.js"></script>
+    <script>
+        function updateCartCount() {
+            $.ajax({
+                url: '@Url.Action("GetCartCount", "Home")',
+                method: 'GET',
+                success: function (data) {
+                    $('#cart-count').text(data.count); 
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            updateCartCount();
+        });
+    </script>
 </body>
 </html>

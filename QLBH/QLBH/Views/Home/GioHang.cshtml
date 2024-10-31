@@ -29,7 +29,7 @@
                                     @item.TenHH
                                 </p>
                                 <span class="cart-item-price total-price" data-cart_id="@item.Mahh">
-                                    @String.Format("{0:N3}", item.dongia * item.SoLuong) đ<!-- Hiển thị giá với định dạng số -->
+                                    @String.Format("{0:N0}", item.dongia * item.SoLuong) đ
                                 </span>
                             </div>
                             <p class="product-note"><i class="fa-light fa-pencil"></i><span>Không có ghi chú</span></p>
@@ -38,6 +38,7 @@
                                     <button class="cart-item-delete" onclick="deleteCartItem(@item.Mahh, this)">Xóa</button>
                                 </a>
                                 <div class="buttons_added">
+                                    <input class="input-qty quantity" id="total-price" max="100" min="1" type="number" value="@item.SoLuong" name="quantity">
 
                                 </div>
                             </div>
@@ -50,18 +51,34 @@
             <div class="cart-total-price">
                 <p class="text-tt">Tổng tiền:</p>
                 <p class="text-price">
-                    @String.Format("{0:N3}", Model.Sum(x => x.dongia * x.SoLuong))
+                    @String.Format("{0:N0}", Model.Sum(x => x.dongia * x.SoLuong)) đ
                 </p>
             </div>
             <div class="cart-footer-payment">
-                <button class="them-mon"><i class="fa-regular fa-plus"></i> Thêm món</button>
-                <button class="thanh-toan @(Model.Any() ? "" : "disabled")">Thanh toán</button>
+                <button class="them-mon exit"><i class="fa-regular fa-plus"></i> Thêm món</button>
+                <button class="thanh-toan pay">Thanh toán</button>
             </div>
         </div>
     </div>
 </div>
 
 @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.pay').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("ThanhToan", "Home")",
+                    success: function (result) {
+                        if (result) {
+                            window.location.href = "@Url.Action("ThanhToan", "Home")";
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         $(document).ready(function () {
             $('.exit').click(function () {
@@ -98,15 +115,14 @@
     </script>
     <script>
         function updateQuantity(productId, quantity) {
-            // Gửi yêu cầu cập nhật số lượng sản phẩm lên server
             $.ajax({
                 url: '@Url.Action("UpdateQuantity", "Home")',
                 type: 'POST',
                 data: { productId: productId, quantity: quantity },
                 success: function (response) {
                     if (response.success) {
-                        updateTotalPrice(productId); // Cập nhật lại giá tổng của sản phẩm
-                        updateCartTotal(); // Cập nhật tổng giỏ hàng
+                        updateTotalPrice(productId); 
+                        updateCartTotal(); 
                     } else {
                         alert("Cập nhật không thành công.");
                     }
@@ -124,21 +140,21 @@
                 data: { productId: productId, quantity: quantity },
                 success: function (data) {
                     $(`.cart-item[data-id="${productId}"] .total-price`).text(data.totalPrice.toLocaleString('vi-VN'));
-                    updateCartTotal(); // Gọi lại hàm để cập nhật tổng giỏ hàng
+                    updateCartTotal(); 
                 },
                 error: function () {
                     console.log("Error occurred while updating total price.");
                 }
             });
         }
-        function updateCartTotal() {
-            let total = 0;
-            $('.text-price').each(function () {
-                const priceText = $(this).text().replace(/[^0-9]/g, ''); // Lấy giá trị số từ chuỗi
-                total += parseInt(priceText) || 0; // Cộng dồn vào tổng
-            });
-            $('.text-price').text(total.toLocaleString('vi-VN') + ' ₫'); // Cập nhật tổng tiền
-        }
+        // function updateCartTotal() {
+        //     let total = 0;
+        //     $('.text-price').each(function () {
+        //         const priceText = $(this).text().replace(/[^0-9]/g, ''); 
+        //         total += parseInt(priceText) || 0;
+        //     });
+        //     $('.text-price').text(total.toLocaleString('vi-VN') + ' ₫'); 
+        // }
 
 
     </script>
