@@ -281,5 +281,73 @@ namespace QLBH.Areas.Admin.Controllers
             return RedirectToAction("HoaDon", "HomeAdmin");
         }
 
+
+        // Khách hàng
+        [Route("")]
+        [Route("KhachHang")]
+        public IActionResult KhachHang(int? page)
+        {
+            int pageSize = 10;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            var lstsanpham = db.Khachhangs.AsNoTracking().OrderBy(x => x.MaKh);
+            PagedList<Khachhang> lst = new PagedList<Khachhang>(lstsanpham, pageNumber, pageSize);
+
+            return View(lst);
+        }
+        [Route("ThemKhachHang")]
+        [HttpGet]
+        public IActionResult ThemKhachHang()
+        {
+            return View();
+        }
+
+        [Route("ThemKhachHang")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ThemKhachHang(Khachhang SanPham)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Khachhangs.Add(SanPham);
+                db.SaveChanges();
+                return RedirectToAction("KhachHang");
+            }
+            return View(SanPham);
+        }
+
+        [Route("SuaKhachHang")]
+        [HttpGet]
+        public IActionResult SuaKhachHang(int masanpham)
+        {
+            var sanPham = db.Khachhangs.Find(masanpham);
+            return View(sanPham);
+        }
+
+        [Route("SuaKhachHang")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SuaKhachHang(Khachhang SanPham)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(SanPham).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("KhachHang", "HomeAdmin");
+            }
+            return View(SanPham);
+        }
+
+        [Route("XoaKhachHang")]
+        [HttpGet]
+        public IActionResult XoaKhachHang(int masanpham)
+        {
+            TempData["Message"] = "";
+
+            db.Remove(db.Khachhangs.Find(masanpham));
+            db.SaveChanges();
+            TempData["Message"] = "đã xóa thông tin khách hàng này";
+            return RedirectToAction("KhachHang", "HomeAdmin");
+        }
+
     }
 }
