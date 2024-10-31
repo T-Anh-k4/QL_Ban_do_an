@@ -1,0 +1,134 @@
+﻿    @{
+        ViewData["Title"] = "HoaDon";
+        Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    @using QLBH.Models;
+    @using X.PagedList.Mvc.Core;
+    @model X.PagedList.IPagedList<Hoadonban>
+
+    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+    <h2>Danh sách hóa đơn</h2>
+
+   @*  <p>
+        <a class="btn btn-sm btn-primary" asp-action="ThemHoaDon">Create New</a>
+    </p> *@
+    <p>@TempData["Message"]</p>
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">List Products</h6>
+                <a href="">Show All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-start align-middle mb-0">
+                    <thead>
+                        <tr class="text-white">
+                            <th>Mã hóa đơn</th>
+                            <th>Tên khách hàng</th>
+                            <th>Tên món ăn</th>
+                            <th>Số lượng</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.SoHdb)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MaKhNavigation.TenKh)</td> 
+                                <td>
+                                    @{
+                                        // Kiểm tra có dữ liệu trong Chitiethoadons
+                                        var firstChiTiet = item.Chitiethoadons.FirstOrDefault();
+                                        var tenMonAn = firstChiTiet?.MaChiTietSpNavigation?.MaMonAnNavigation?.TenHh ?? "Không có dữ liệu";
+                                    }
+                                    @tenMonAn
+                                </td>
+                                <td>
+                                    @{
+                                        var soLuong = firstChiTiet?.SoLuong ?? 0; 
+                                    }
+                                    @soLuong 
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.NgayDatHang)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TongTien)</td>
+                            <td>
+                                @if (item.TrangThaiTt == "0")
+                                {
+                                    <span>Chưa thanh toán</span>
+                                }
+                                else if (item.TrangThaiTt == "1")
+                                {
+                                    <span>Đã thanh toán</span>
+                                }
+                                else
+                                {
+                                    <span>Không xác định</span> 
+                                }
+                            </td>
+                            <td>
+                                    <a class="btn btn-sm btn-primary" asp-action="SuaHoaDon" asp-route-maSanPham="@item.SoHdb">Edit</a>
+                                    <a class="btn btn-sm btn-primary" asp-action="XoaHoaDon" asp-route-maSanPham="@item.SoHdb">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @Html.PagedListPager(Model, page => Url.Action("HoaDon", new { page = page }), new PagedListRenderOptions
+    {
+        ContainerDivClasses = new[] { "page-nav" },
+        UlElementClasses = new[] { "page-nav-list" },
+        LiElementClasses = new[] { "page-nav-item" }
+    })
+
+    @section Styles {
+        <style>
+            .page-nav, .page-nav-list {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                column-gap: 10px;
+                margin-top: 10px;
+                list-style: none;
+            }
+
+            .page-nav-item a {
+                display: inline-block;
+                border: 2px solid #000;
+                height: 30px;
+                width: 30px;
+                text-align: center;
+                line-height: 27px;
+                font-size: 15px;
+                background-color: white;
+            }
+
+                .page-nav-item.active a, .page-nav-item a:hover {
+                    color: white;
+                    background-color: red;
+                }
+
+            .btn-primary {
+                background-color: red;
+                border-color: red;
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+            }
+
+                .btn-primary:hover {
+                    background-color: #0056b3;
+                    border-color: #0056b3;
+                }
+        </style>
+    }

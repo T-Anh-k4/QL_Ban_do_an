@@ -24,13 +24,12 @@
                     @foreach (var item in Model) // Vòng lặp foreach để hiển thị các sản phẩm trong giỏ hàng
                     {
                         <li class="cart-item" data-id="@item.Mahh">
-                            <!-- Sử dụng data-id để lưu mã sản phẩm -->
                             <div class="cart-item-info">
                                 <p class="cart-item-title">
                                     @item.TenHH
                                 </p>
                                 <span class="cart-item-price total-price" data-cart_id="@item.Mahh">
-                                    @String.Format("{0:N0}", item.dongia * item.SoLuong) đ<!-- Hiển thị giá với định dạng số -->
+                                    @String.Format("{0:N3}", item.dongia * item.SoLuong) đ<!-- Hiển thị giá với định dạng số -->
                                 </span>
                             </div>
                             <p class="product-note"><i class="fa-light fa-pencil"></i><span>Không có ghi chú</span></p>
@@ -51,7 +50,7 @@
             <div class="cart-total-price">
                 <p class="text-tt">Tổng tiền:</p>
                 <p class="text-price">
-                    @String.Format("{0:N0}", Model.Sum(x => x.dongia * x.SoLuong))
+                    @String.Format("{0:N3}", Model.Sum(x => x.dongia * x.SoLuong))
                 </p>
             </div>
             <div class="cart-footer-payment">
@@ -134,7 +133,7 @@
         }
         function updateCartTotal() {
             let total = 0;
-            $('.total-price').each(function () {
+            $('.text-price').each(function () {
                 const priceText = $(this).text().replace(/[^0-9]/g, ''); // Lấy giá trị số từ chuỗi
                 total += parseInt(priceText) || 0; // Cộng dồn vào tổng
             });

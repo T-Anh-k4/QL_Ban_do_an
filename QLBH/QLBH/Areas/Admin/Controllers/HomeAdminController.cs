@@ -189,5 +189,97 @@ namespace QLBH.Areas.Admin.Controllers
             TempData["Message"] = "đã xóa loại sản phẩm này";
             return RedirectToAction("LoaiSanPham", "HomeAdmin");
         }
+
+
+        [Route("")]
+        [Route("HoaDon")]
+        public IActionResult HoaDon(int? page)
+        {
+            int pageSize = 10;
+            int pageNumber = page == null || page < 1 ? 1 : page.Value;
+
+            // Eager loading để lấy dữ liệu từ các bảng liên quan
+            var lstsanpham = db.Hoadonbans
+                .Include(h => h.MaKhNavigation) 
+                .Include(h => h.Chitiethoadons) 
+                    .ThenInclude(c => c.MaChiTietSpNavigation) 
+                        .ThenInclude(m => m.MaMonAnNavigation) 
+                .AsNoTracking()
+                .OrderBy(x => x.SoHdb);
+
+            PagedList<Hoadonban> lst = new PagedList<Hoadonban>(lstsanpham, pageNumber, pageSize);
+
+            return View(lst);
+        }
+
+        //[Route("ThemHoaDon")]
+        //[HttpGet]
+        //public IActionResult ThemHoaDon()
+        //{
+        //    return View();
+        //}
+
+        //[Route("ThemHoaDon")]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult ThemHoaDon(Hoadonban SanPham)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Hoadonbans.Add(SanPham);
+        //        db.SaveChanges();
+        //        return RedirectToAction("HoaDon");
+        //    }
+        //    return View(SanPham);
+        //}
+
+        [Route("SuaHoaDon")]
+        [HttpGet]
+        public IActionResult SuaHoaDon(int masanpham)
+        {
+            var sanPham = db.Hoadonbans.Find(masanpham);
+            return View(sanPham);
+        }
+
+        [Route("SuaHoaDon")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SuaHoaDon(Hoadonban SanPham)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(SanPham).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("HoaDon", "HomeAdmin");
+            }
+            return View(SanPham);
+        }
+
+        [Route("XoaHoaDon")]
+        [HttpGet]
+        public IActionResult XoaHoaDon(int masanpham)
+        {
+            TempData["Message"] = "";
+
+            var hoaDon = db.Hoadonbans.Find(masanpham);
+            if (hoaDon == null)
+            {
+                TempData["Message"] = "Hóa đơn không tồn tại.";
+                return RedirectToAction("HoaDon", "HomeAdmin");
+            }
+
+            if (hoaDon.TrangThaiTt == "0") 
+            {
+                TempData["Message"] = "Không thể xóa hóa đơn chưa thanh toán.";
+                return RedirectToAction("HoaDon", "HomeAdmin");
+            }
+
+            db.Hoadonbans.Remove(hoaDon);
+            db.SaveChanges();
+
+            TempData["Message"] = "Đã xóa hóa đơn này.";
+            return RedirectToAction("HoaDon", "HomeAdmin");
+        }
+
     }
 }
