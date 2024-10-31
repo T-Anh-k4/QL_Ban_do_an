@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="product-price">
-                            <span class="current-price">@item.DonGiaBan</span>
+                            <span class="current-price">@String.Format("{0:N3}", item.DonGiaBan)</span>
                         </div>
                         <div class="product-buy">
                             <button onclick="detailProduct(1)" class="card-button order-item"><i class="fa-regular fa-cart-shopping-fast"></i> Đặt món</button>

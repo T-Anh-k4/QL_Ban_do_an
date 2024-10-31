@@ -77,7 +77,7 @@
                     str += '            </div>';
                     str += '            <div class="card-footer">';
                     str += '                <div class="product-price">';
-                    str += '                    <span class="current-price">' + parseFloat(val.donGiaBan).toFixed(4) + ' đ</span>'; 
+                    str += '                    <span class="current-price">' + parseFloat(val.donGiaBan).toLocaleString('vi-VN') + ' đ</span>';
 
                     str += '                </div>';
                     str += '                <div class="product-buy">';
@@ -97,3 +97,4 @@
         });
     }
 </script>
+

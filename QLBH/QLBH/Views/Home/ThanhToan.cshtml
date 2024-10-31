@@ -2,7 +2,7 @@
     ViewData["Title"] = "ThanhToan";
     Layout = "~/Views/Shared/_LayoutOgani.cshtml";
 }
-
+@model IEnumerable<QLBH.Models.ProductModels.CartItem>
 <div class="checkout-page active">
     <div class="checkout-header">
         <div class="checkout-return">
@@ -39,13 +39,18 @@
                 </div>
             </div>
         </div>
+
         <div class="checkout-col-right">
             <p class="checkout-content-label">Đơn hàng</p>
+        @foreach (var item in Model)
+        {
             <div class="bill-total" id="list-order-checkout">
                 <div class="food-total">
-                    <div class="count">1x</div>
+                        <div class="count">
+                            <input class="input-qty quantity" id="total-price" max="100" min="1" type="number" value="@item.SoLuong" name="quantity">
+                        </div>
                     <div class="info-food">
-                        <div class="name-food">Rau xào ngũ sắc</div>
+                        <div class="name-food">@item.TenHH</div>
                     </div>
                 </div>
             </div>
@@ -54,32 +59,131 @@
                     <div class="priceFlx">
                         <div class="text">
                             Tiền hàng
-                            <span class="count">1 món</span>
                         </div>
                         <div class="price-detail">
-                            <span id="checkout-cart-total">180.000&nbsp;₫</span>
-                        </div>
-                    </div>
-                    <div class="priceFlx chk-ship">
-                        <div class="text">Phí vận chuyển</div>
-                        <div class="price-detail chk-free-ship">
-                            <span>30.000&nbsp;₫</span>
+                            <span id="checkout-cart-total" total-price" data-cart_id="@item.Mahh">
+                                @String.Format("{0:N0}", item.dongia * item.SoLuong) đ
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="policy-note">
-                    Bằng việc bấm vào nút “Đặt hàng”, tôi đồng ý với
-                    <a href="#" target="_blank">chính sách hoạt động</a>
-                    của chúng tôi.
+            </div>
+        }
+            <div class="priceFlx chk-ship">
+                <div class="text">Phí vận chuyển</div>
+                <div class="price-detail chk-free-ship">
+                    <span>Free Ship</span>
                 </div>
+            </div>
+            <div class="policy-note">
+                Bằng việc bấm vào nút “Đặt hàng”, tôi đồng ý với
+                <a href="#" target="_blank">chính sách hoạt động</a>
+                của chúng tôi.
             </div>
             <div class="total-checkout">
                 <div class="text">Tổng tiền</div>
                 <div class="price-bill">
-                    <div class="price-final" id="checkout-cart-price-final">210.000&nbsp;₫</div>
+                    <div class="price-final" id="checkout-cart-price-final">
+                        @String.Format("{0:N0}", Model.Sum(x => x.dongia * x.SoLuong)) đ
+                    </div>
                 </div>
             </div>
-            <button class="complete-checkout-btn">Đặt hàng</button>
+            <a class="succsess">
+                <button class="complete-checkout-btn">Đặt hàng</button>
+            </a>
         </div>
     </main>
 </div>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $('.succsess').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Index", "Home")",
+                    success: function (result) {
+                        if (result) {
+                            Swal.fire({
+                                title: "Đặt hàng thành công!",
+                                icon: "success",
+                                confirmButtonText: "OK"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "@Url.Action("Index", "Home")";
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function updateQuantity(productId, quantity) {
+            $.ajax({
+                url: '@Url.Action("UpdateQuantity", "Home")',
+                type: 'POST',
+                data: { productId: productId, quantity: quantity },
+                success: function (response) {
+                    if (response.success) {
+                        updateTotalPrice(productId); 
+                        updateCartTotal(); 
+                    } else {
+                        alert("Cập nhật không thành công.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Có lỗi xảy ra khi cập nhật số lượng: ", error);
+                }
+            });
+        }
+        function updateTotalPrice(productId) {
+            const quantity = parseInt($(`.cart-item[data-id="${productId}"]`).find('.quantity').val());
+            $.ajax({
+                url: '@Url.Action("GetTotalPrice", "Home")',
+                type: 'GET',
+                data: { productId: productId, quantity: quantity },
+                success: function (data) {
+                    $(`.cart-item[data-id="${productId}"] .total-price`).text(data.totalPrice.toLocaleString('vi-VN'));
+                    updateCartTotal(); 
+                },
+                error: function () {
+                    console.log("Error occurred while updating total price.");
+                }
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').click(function () {
+                var id = $(this).data("product_id");
+                var quantity = $('#quantity').val(); /
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Index", "Home")",
+                    data: { Id: id, quantity: quantity },
+                    success: function (result) {
+                        if (result) {
+                            updateCartCount();
+                            Swal.fire({
+                                title: "Thêm giỏ hàng thành công!",
+                                icon: "success",
+                                customClass: {
+                                    popup: 'small-swal-popup'
+                                },
+                                confirmButtonText: "OK"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    $('.modal-close.close-popup').click();
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>@* them gio hang *@
+}
