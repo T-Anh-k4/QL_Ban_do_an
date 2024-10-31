@@ -30,12 +30,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXERhbmhNdWNTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/HoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEhvYURvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/LoaiSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXExvYWlTYW5QaGFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN1YUhvYURvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaLoaiSanPham.cshtml]
