@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/KhachHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXEtoYWNoSGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/LoaiSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXExvYWlTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,12 +50,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN1YUhvYURvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaKhachHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN1YUtoYWNoSGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaLoaiSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN1YUxvYWlTYW5QaGFtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/SuaSanPham.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFN1YVNhblBoYW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/ThemKhachHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZUFkbWluXFRoZW1LaGFjaEhhbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Thiết kế web/LẬP TRÌNH WEB/QL_Ban_do_an/QLBH/QLBH/Areas/Admin/Views/HomeAdmin/ThemLoaiSanPhamMoi.cshtml]

@@ -1,15 +1,16 @@
 ﻿@using QLBH.Models;
 @using X.PagedList.Mvc.Core;
-@model X.PagedList.IPagedList<Monan>
+@model X.PagedList.IPagedList<Khachhang>
 @{
-    ViewData["Title"] = "DanhMucSanPham";
+    ViewData["Title"] = "KhachHang";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 @addTagHelper * ,Microsoft.AspNetCore.Mvc.TagHelpers
-<h2>Danh Mục Các Sản Phẩm</h2>
+
+<h1>Khách hàng</h1>
 
 <p>
-    <a class="btn btn-sm btn-primary" asp-action="ThemSanPhamMoi">Create New</a>
+    <a class="btn btn-sm btn-primary" asp-action="ThemKhachHang">Create New</a>
 </p>
 <p>@TempData["Message"]</p>
 <div class="container-fluid pt-4 px-4">
@@ -23,61 +24,48 @@
     <thead>
         <tr class="text-white">
             <th>
-                Mã món ăn
+                Tên khách hàng
             </th>
             <th>
-                Mã loại
+                Địa chỉ
             </th>
             <th>
-                Tên sản phẩm
+                Số điện thoại
             </th>
             <th>
-                Đơn giá bán
+                Giới tính
             </th>
-            <th>
-                Ảnh
-            </th>
-           @* <th>
-                @Html.DisplayNameFor(model => model.MaLoaiNavigation)
-            </th> *@
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaMonAn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaLoai)
-                </td>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TenHh)
+                @Html.DisplayFor(modelItem => item.TenKh)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DonGiaBan)
+                @Html.DisplayFor(modelItem => item.DiaChi)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Anh)
+                @Html.DisplayFor(modelItem => item.Sdt)
             </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.MaLoaiNavigation.MaLoai)
-            </td> *@
             <td>
-                <a class="btn btn-sm btn-primary" asp-action="SuaSanPham" asp-route-maSanPham="@item.MaMonAn">Edit</a> 
-              @*<a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.MaMonAn">Details</a> | *@
-                <a class="btn btn-sm btn-primary" asp-action="XoaSanPham" asp-route-masanpham="@item.MaMonAn">Delete</a>
-           </td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+         <a class="btn btn-sm btn-primary" asp-action="SuaKhachHang" asp-route-maSanPham="@item.MaKh">Edit</a> 
+         <a class="btn btn-sm btn-primary" asp-action="XoaKhachHang" asp-route-masanpham="@item.MaKh">Delete</a>
+            </td>
         </tr>
 }
     </tbody>
 </table>
-        </div>
+  </div>
 </div>
 </div>
 
-@Html.PagedListPager(Model, page => Url.Action("DanhMucSanPham", new { page = page }), new PagedListRenderOptions
+@Html.PagedListPager(Model, page => Url.Action("KhachHang", new { page = page }), new PagedListRenderOptions
  {
      ContainerDivClasses = new[] { "page-nav" }, // Thêm class cho div bao quanh
      UlElementClasses = new[] { "page-nav-list" }, // Thêm class cho ul
