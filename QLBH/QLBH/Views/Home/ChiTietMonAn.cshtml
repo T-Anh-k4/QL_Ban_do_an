@@ -18,7 +18,7 @@
             <h2 class="product-title">@Model.monan.TenHh</h2>
             <div class="product-control">
                 <div class="priceBox">
-                    <span class="current-price" id="unit-price">@String.Format("{0:N3}", Model.monan.DonGiaBan)</span> 
+                    <span class="current-price" id="unit-price">@String.Format("{0:N3}", Model.monan.DonGiaBan)</span>
                 </div>
                 <div class="buttons_added">
                     <input class="minus is-form" type="button" value="-" id="decreaseButton">
@@ -57,9 +57,9 @@
         $('.modal-close').click(function () {
             var previousListUrl = sessionStorage.getItem('previousListUrl');
             if (previousListUrl) {
-                showProductsByCategory(previousListUrl); 
+                showProductsByCategory(previousListUrl);
             } else {
-                window.location.href = '@Url.Action("Index", "Home")'; 
+                window.location.href = '@Url.Action("Index", "Home")';
             }
         });
     });
@@ -146,7 +146,6 @@
     <script>
         $(document).ready(function () {
             const productId = '@Model.monan.MaMonAn';
-
             function updateTotalPrice() {
                 const quantity = parseInt($('#quantity').val());
 
@@ -167,5 +166,3 @@
         });
     </script>
 }
-
-

@@ -38,9 +38,6 @@
                                     <button class="cart-item-delete" onclick="deleteCartItem(@item.Mahh, this)">Xóa</button>
                                 </a>
                                 <div class="buttons_added">
-                                    <input class="minus is-form decreaseButton" type="button" value="-">
-                                    <input class="input-qty quantity" id="total-price" max="100" min="1" type="number" value="@item.SoLuong" name="quantity">
-                                    <input class="plus is-form increaseButton" type="button" value="+">
 
                                 </div>
                             </div>
@@ -134,32 +131,6 @@
                 }
             });
         }
-
-
-        $('.decreaseButton').on('click', function () {
-            const quantityInput = $(this).closest('.cart-item').find('.quantity');
-            const productId = $(this).closest('.cart-item').data('id');
-            if (quantityInput.val() > 1) {
-                quantityInput.val(parseInt(quantityInput.val()) - 1);
-                updateTotalPrice(productId);
-                updateCartTotal();
-                updateQuantity(productId, quantityInput.val()); // Gọi hàm cập nhật số lượng
-
-            }
-        });
-
-        $('.increaseButton').on('click', function () {
-            const quantityInput = $(this).closest('.cart-item').find('.quantity');
-            const productId = $(this).closest('.cart-item').data('id');
-            if (quantityInput.val() < 100) {
-                quantityInput.val(parseInt(quantityInput.val()) + 1);
-                updateTotalPrice(productId);
-                updateCartTotal();
-                updateQuantity(productId, quantityInput.val()); // Gọi hàm cập nhật số lượng
-
-            }
-        });
-
         function updateCartTotal() {
             let total = 0;
             $('.text-price').each(function () {
