@@ -64,6 +64,11 @@ namespace QLBH.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThemSanPhamMoi(Monan SanPham)
         {
+            var existingProduct = db.Monans.FirstOrDefault(l => l.MaMonAn == SanPham.MaMonAn);
+            if (existingProduct != null)
+            {
+                ModelState.AddModelError("MaMonAn", "Mã món ăn này đã tồn tại. Vui lòng nhập mã khác.");
+            }
             if (ModelState.IsValid)
             {
                 db.Monans.Add(SanPham);
@@ -142,6 +147,11 @@ namespace QLBH.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThemLoaiSanPhamMoi(Loaimonan SanPham)
         {
+            var existingProduct = db.Loaimonans.FirstOrDefault(l => l.MaLoai == SanPham.MaLoai);
+            if (existingProduct != null)
+            {
+                ModelState.AddModelError("MaLoai", "Mã loại này đã tồn tại. Vui lòng nhập mã khác.");
+            }
             if (ModelState.IsValid)
             {
                 db.Loaimonans.Add(SanPham);
@@ -306,6 +316,11 @@ namespace QLBH.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThemKhachHang(Khachhang SanPham)
         {
+            var existingProduct = db.Khachhangs.FirstOrDefault(l => l.MaKh == SanPham.MaKh);
+            if (existingProduct != null)
+            {
+                ModelState.AddModelError("MaKh", "Mã khách hàng này đã tồn tại. Vui lòng nhập mã khác.");
+            }
             if (ModelState.IsValid)
             {
                 db.Khachhangs.Add(SanPham);
