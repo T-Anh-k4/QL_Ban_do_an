@@ -48,9 +48,9 @@
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Vy Food</h3>
                             </a>
-                            <h3>Sign Up</h3>
+                            <h3>Đăng ký</h3>
                         </div>
 
                         @if (ViewBag.ErrorMessage != null)
@@ -65,22 +65,22 @@
                             <span asp-validation-for="TaiKhoan" class="text-danger"></span>
                             <div class="form-floating mb-3">
                                 @Html.TextBoxFor(model => model.TaiKhoan, new { @class = "form-control", placeholder = "Username" })
-                                <label for="floatingText">Username</label>
+                                <label for="floatingText">Tên tài khoản</label>
                             </div>
                             <span asp-validation-for="Email" class="text-danger"></span>
                             <div class="form-floating mb-3">
                                 @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
-                                <label for="floatingInput">Email address</label>
+                                <label for="floatingInput">Email</label>
                             </div>
                             <span asp-validation-for="MatKhau" class="text-danger"></span>
                             <div class="form-floating mb-4">
                                 @Html.PasswordFor(model => model.MatKhau, new { @class = "form-control", placeholder = "Password" })
-                                <label for="floatingPassword">Password</label>
+                                <label for="floatingPassword">Mật khẩu</label>
                             </div>
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Dăng ký</button>
                         }
                         <div asp-validation-summary="All" class="text-danger"></div>
-                        <p class="text-center mb-0">Already have an Account? <a href="/Access/Login">Sign In</a></p>
+                        <p class="text-center mb-0">Bạn đã có tài khoản ? <a href="/Access/Login"> Đăng nhập</a></p>
                     </div>
                 </div>
             </div>
