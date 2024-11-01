@@ -13,7 +13,7 @@ public partial class Monan
     [RegularExpression(@"^[^\d]+$", ErrorMessage = "Tên món ăn không được chứa số.")]
     [Required(ErrorMessage = "Xin vui lòng nhập tên món ăn.")]
     public string? TenHh { get; set; }
-    [Range(0, double.MaxValue, ErrorMessage = "Đơn giá bán phải lớn hơn hoặc bằng 0")]
+    [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Giá trị không hợp lệ. Nó phải là số với tối đa 2 chữ số thập phân.")]
     [Required(ErrorMessage = "Xin vui lòng nhập đơn giá bán.")]
     public decimal? DonGiaBan { get; set; }
     [Required(ErrorMessage = "Xin vui lòng nhập đường dẫn của ảnh.")]

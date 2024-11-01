@@ -12,4 +12,5 @@ public partial class Loaimonan
     public string? TenLoai { get; set; }
 
     public virtual ICollection<Monan> Monans { get; set; } = new List<Monan>();
+
 }
