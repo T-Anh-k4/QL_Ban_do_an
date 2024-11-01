@@ -144,6 +144,11 @@ namespace QLBH.Controllers
             }
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Clear(int id)
+        {
+            HttpContext.Session.Remove(CART_KEY);
+            return RedirectToAction("Index");
+        }
         [HttpPost]
         [Route("UpdateQuantity")]
         public IActionResult UpdateQuantity(int id, int quantity=1)

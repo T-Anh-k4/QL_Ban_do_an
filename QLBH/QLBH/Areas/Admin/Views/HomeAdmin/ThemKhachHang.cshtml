@@ -21,25 +21,26 @@
                 <span asp-validation-for="MaKh" class="text-danger"></span>
             </div> *@
             <div class="form-group">
-                <label asp-for="TenKh" class="control-label"></label>
+                <label asp-for="TenKh" class="control-label">Tên khách hàng</label>
                 <input asp-for="TenKh" class="form-control" />
                 <span asp-validation-for="TenKh" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DiaChi" class="control-label"></label>
+                <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
                 <input asp-for="DiaChi" class="form-control" />
                 <span asp-validation-for="DiaChi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sdt" class="control-label"></label>
+                <label asp-for="Sdt" class="control-label">Số điện thoại</label>
                 <input asp-for="Sdt" class="form-control" />
                 <span asp-validation-for="Sdt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GioiTinh" class="control-label"></label>
+                <label asp-for="GioiTinh" class="control-label">Giới tính</label>
                 <input asp-for="GioiTinh" class="form-control" />
                 <span asp-validation-for="GioiTinh" class="text-danger"></span>
-            </div>
+            </div>   
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -48,7 +49,7 @@
 </div>
 
 <div class="text-center mt-4">
-    <a class="btn btn-secondary " asp-action="KhachHang">Back to List</a>
+    <a class="btn btn-secondary " asp-action="KhachHang">Trở lại</a>
 </div>
 
 @section Styles {
