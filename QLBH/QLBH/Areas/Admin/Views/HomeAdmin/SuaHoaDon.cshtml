@@ -6,9 +6,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1 class="centreH">SuaHoaDon</h1>
+<h1 class="centreH">Sửa hóa đơn</h1>
 
-<h4 class="centreH">Hoadonban</h4>
+<h4 class="centreH">Hóa đơn bán</h4>
 <hr />
 <div class="row justify-content-center">
     <div class="col-md-4">
@@ -16,17 +16,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="SoHdb" />
             <div class="form-group">
-                <label asp-for="NgayDatHang" class="control-label"></label>
+                <label asp-for="NgayDatHang" class="control-label">Ngày đặt hàng</label>
                 <input asp-for="NgayDatHang" class="form-control" />
                 <span asp-validation-for="NgayDatHang" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TongTien" class="control-label"></label>
+                <label asp-for="TongTien" class="control-label">Tổng tiền</label>
                 <input asp-for="TongTien" class="form-control" />
                 <span asp-validation-for="TongTien" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TrangThaiTt" class="control-label"></label>
+                <label asp-for="TrangThaiTt" class="control-label">Trạng thái thanh toán</label>
                 <input asp-for="TrangThaiTt" class="form-control" />
                 <span asp-validation-for="TrangThaiTt" class="text-danger"></span>
             </div>
@@ -38,7 +38,7 @@
 </div>
 
 <div class="text-center mt-4">
-    <a class="btn btn-secondary " asp-action="HoaDon">Back to List</a>
+    <a class="btn btn-secondary " asp-action="HoaDon">Trở lại</a>
 </div>
 
 @section Styles {

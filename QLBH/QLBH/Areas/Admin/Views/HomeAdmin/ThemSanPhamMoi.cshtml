@@ -15,29 +15,30 @@
         <form method="post" asp-action="ThemSanPhamMoi">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MaMonAn" class="control-label"></label>
+                <label asp-for="MaMonAn" class="control-label"> Mã món ăn</label>
                 <input asp-for="MaMonAn" class="form-control" />
                 <span asp-validation-for="MaMonAn" class="text-danger"></span>
             </div>  
             <div class="form-group">
-                <label asp-for="MaLoai" class="control-label"></label>
+                <label asp-for="MaLoai" class="control-label">Mã loại sản phẩm</label>
                 <select asp-for="MaLoai" class ="form-control" asp-items="ViewBag.MaLoai"></select>
             </div>
             <div class="form-group">
-                <label asp-for="TenHh" class="control-label"></label>
+                <label asp-for="TenHh" class="control-label">Tên món ăn</label>
                 <input asp-for="TenHh" class="form-control" />
                 <span asp-validation-for="TenHh" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DonGiaBan" class="control-label"></label>
+                <label asp-for="DonGiaBan" class="control-label">Đơn giá bán</label>
                 <input asp-for="DonGiaBan" class="form-control" />
                 <span asp-validation-for="DonGiaBan" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Anh" class="control-label"></label>
+                <label asp-for="Anh" class="control-label">Ảnh</label>
                 <input asp-for="Anh" class="form-control" />
                 <span asp-validation-for="Anh" class="text-danger"></span>
             </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -46,7 +47,7 @@
 </div>
 
 <div class="text-center mt-4">
-    <a class="btn btn-secondary " asp-action="DanhMucSanPham">Back to List</a>
+    <a class="btn btn-secondary " asp-action="DanhMucSanPham">Trở lại</a>
 </div>
 
 
