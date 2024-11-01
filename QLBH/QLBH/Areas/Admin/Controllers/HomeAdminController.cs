@@ -189,5 +189,108 @@ namespace QLBH.Areas.Admin.Controllers
             TempData["Message"] = "đã xóa loại sản phẩm này";
             return RedirectToAction("LoaiSanPham", "HomeAdmin");
         }
+
+         // Khách hàng
+        [Route("")]
+        [Route("KhachHang")]
+        public IActionResult KhachHang(int? page)
+        {
+            int pageSize = 10;
+            int pageNumber = page == null || page < 0 ? 1 : page.Value;
+            var lstKhachHang = db.Khachhangs.AsNoTracking().OrderBy(x => x.MaKh);
+            PagedList<Khachhang> lst = new PagedList<Khachhang>(lstKhachHang, pageNumber, pageSize);
+
+            return View(lst);
+        }
+
+        [Route("ThemKhachHangMoi")]
+        [HttpGet]
+        public IActionResult ThemKhachHangMoi()
+        {
+            return View();
+        }
+
+        [Route("ThemKhachHangMoi")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ThemKhachHangMoi(Khachhang KhachHang)
+        {
+            if (ModelState.IsValid)
+            {
+                // Kiểm tra xem tên đăng nhập đã tồn tại chưa
+                //if (db.Khachhangs.Any(x => x.MaKh == KhachHang.TaiKhoan))
+                //{
+                //    ModelState.AddModelError("TaiKhoan", "Tên đăng nhập đã tồn tại.");
+                //    return View(KhachHang);
+                //}
+
+                // Thêm khách hàng mới
+                db.Khachhangs.Add(KhachHang);
+                db.SaveChanges();
+                return RedirectToAction("KhachHang");
+            }
+            return View(KhachHang);
+        }
+
+        [Route("SuaKhachHang")]
+        [HttpGet]
+        public IActionResult SuaKhachHang(int maKhachHang)
+        {
+            var khachHang = db.Khachhangs.Find(maKhachHang);
+            return View(khachHang);
+        }
+
+        [Route("SuaKhachHang")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SuaKhachHang(Khachhang KhachHang)
+        {
+            if (ModelState.IsValid)
+            {
+                //// Kiểm tra xem tên đăng nhập đã tồn tại cho người dùng khác chưa
+                //if (db.Ng.Any(x => x.TaiKhoan == KhachHang.TaiKhoan && x.MaNguoiDung != KhachHang.MaNguoiDung))
+                //{
+                //    ModelState.AddModelError("TaiKhoan", "Tên đăng nhập đã tồn tại.");
+                //    return View(KhachHang);
+                //}
+
+                // Cập nhật thông tin khách hàng
+                db.Entry(KhachHang).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("KhachHang", "HomeAdmin");
+            }
+            return View(KhachHang);
+        }
+
+       [Route("XoaKhachHang")]
+       [HttpGet]
+       public IActionResult XoaKhachHang(int maKhachHang)
+       {
+           TempData["Message"] = "";
+       
+           // Sửa lỗi ở đây: Tìm kiếm khách hàng trong bảng Khachhang
+           var khachHang = db.Khachhangs.Find(maKhachHang); 
+       
+           if (khachHang != null) // Kiểm tra xem khách hàng có tồn tại không
+           {
+               // Kiểm tra xem có hóa đơn nào liên quan đến khách hàng cần xóa hay không
+               var HoaDonBans = db.Hoadonbans.Where(x => x.MaKh == maKhachHang).ToList(); 
+               if (HoaDonBans.Count() > 0)
+               {
+                   TempData["Message"] = "Không xóa khách hàng này vì có hóa đơn liên quan";
+                   return RedirectToAction("KhachHang", "HomeAdmin");
+               }
+       
+               db.Khachhangs.Remove(khachHang);
+               db.SaveChanges();
+               TempData["Message"] = "Đã xóa khách hàng này";
+           }
+           else
+           {
+               TempData["Message"] = "Không tìm thấy khách hàng cần xóa";
+           }
+           return RedirectToAction("KhachHang", "HomeAdmin");
+       }
+       
     }
 }
