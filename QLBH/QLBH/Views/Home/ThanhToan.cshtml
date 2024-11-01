@@ -101,11 +101,11 @@
             $('.succsess').click(function () {
                 $.ajax({
                     type: "POST",
-                    url: "@Url.Action("Index", "Home")",
+                    url: "@Url.Action("Clear", "Home")",
                     success: function (result) {
                         if (result) {
                             Swal.fire({
-                                title: "Đặt hàng thành công!",
+                                title: "Chức năng đang bảo trì !",
                                 icon: "success",
                                 confirmButtonText: "OK"
                             }).then((result) => {

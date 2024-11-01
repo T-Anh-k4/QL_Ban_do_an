@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Người Dùng</h5>
                     <p class="card-text">Quản lý người dùng trong hệ thống.</p>
-                    <a href="@Url.Action("Index", "User")" class="btn btn-primary">Xem Chi Tiết</a>
+                    <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="KhachHang" class="btn btn-primary">Xem Chi Tiết</a>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Doanh thu theo năm</h6>
-                        <a href="">Show All</a>
+                        <a href="">Hiển thị tất cả</a>
                     </div>
                     <canvas id="worldwide-sales" width="423" height="211" style="display: block; box-sizing: border-box; height: 211px; width: 423px;"></canvas>
                 </div>
@@ -82,7 +82,7 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Đơn đặt</h6>
-                        <a href="">Show All</a>
+                        <a href="">Hiển thị tất cả</a>
                     </div>
                     <canvas id="salse-revenue" width="423" height="211" style="display: block; box-sizing: border-box; height: 211px; width: 423px;"></canvas>
                 </div>
